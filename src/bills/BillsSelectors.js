@@ -1,0 +1,10 @@
+export const ADD_BILL_BTN_CLASS = 'bills__create-new-btn';
+export const BILL_BLOCK_CLASS = 'bills';
+export const NEW_BILL_CLASS = 'bills__new-bill';
+export const BILL_BTNS_CLASS = 'bills__buttons';
+export const CREATE_BILL_BTN_CLASS = 'bills__save-btn';
+export const CANCEL_BILL_BTN_CLASS = 'bills__cancel-btn';
+export const BILLS_SELCETED_TABBLE_CLASS = 'bills__selected_tabel';
+export const BILLS_LIST_CLASS = 'bills__list';
+export const NEW_BILL_TEMPLATE_CLASS = 'bills__new-template';
+export const NEW_BILL_NAME_CLASS = 'bills__new-name';

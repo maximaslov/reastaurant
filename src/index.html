@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="module" src="./index.js"></script>
+    <title>Restaurant</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+                <div class="header__logo">
+                    <h1>Управління рестораном</h1>
+                </div>
+                <div class="header__settings">
+                    <button class="header__btn btn-settings">Налаштування ресторану</button>
+                    <button class="header__btn btn-bills">Архів рахунків</button>
+                </div>
+        </header>
+    
+        <section class="bills">
+                <div class="bills__new-bill-block">
+                    <button class="bills__create-new-btn">Новий рахунок</button>
+                    <div class="bills__new-template">
+                    
+                    </div>
+                    <form class="bills__waiters-form">
+                        <p><select class="bills__waiters-list" required="required">
+                                <option class="bills__waiter" disabled selected>Оберіть офіціянта</option>
+                            </select>
+                            <input class="bills__select-waiter-btn" type="submit" value="Обрати">
+                        </p>
+                    </form>
+                    <form class="bills__tables-form">
+                        <select class="bills__tables-list" required="required">
+                                <option class="bills__table" disabled selected>Оберіть номер стола</option>
+                        </select>
+                        <input class="bills__select-table-btn" type="submit" value="Обрати">
+                    </form>
+                    
+                    <div class="bills__buttons">
+                        <button class="bills__save-btn">Створити рахунок</button>
+                        <button class="bills__cancel-btn">Скасувати</button>
+                    </div>
+                </div>
+                
+                <div class="bills__list">
+                    
+                </div>
+        </section>
+        <section class="settings">
+            <button class="settings__btn settings__btn--menu">Управління меню</button>
+            <button class="settings__btn settings__btn--vaiters">Управління офіціянтами</button>
+            <button class="settings__btn settings__btn--tables">Управління столами</button>
+        </section>
+    </div>
+
+
+</body>
+</html>

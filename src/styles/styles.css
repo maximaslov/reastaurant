@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 5px;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 10px auto 0 auto;
+  padding: 0 30px 0 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px 0 10px;
+  background-color: rgb(8, 160, 112);
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.header__logo {
+  text-transform: uppercase;
+  font-size: 50%;
+}
+.header__settings {
+  display: flex;
+}
+.header__btn {
+  background-color: white;
+  color: #08a070;
+}
+.header__btn:not(:nth-child(2)) {
+  margin-right: 7px;
+}
+.header__btn:hover {
+  color: #02543a;
+}
+
+.bills {
+  display: flex;
+}
+.bills__new-bill-block {
+  max-width: 245px;
+  width: 100%;
+}
+.bills__new-template {
+  min-width: 245px;
+  width: 100%;
+}
+.bills__new-bill {
+  background-color: rgba(8, 160, 112, 0.336);
+  max-width: 245px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+}
+.bills__new-bill h3 {
+  color: rgb(2, 84, 58);
+  text-transform: uppercase;
+  font-size: 90%;
+}
+.bills__create-new-btn {
+  color: white;
+  background-color: rgb(8, 160, 112);
+}
+.bills__create-new-btn:hover {
+  color: #08a070;
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 4px 4px;
+}
+.bills__waiters-list {
+  background-color: rgb(8, 160, 112);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 5px;
+  border: none;
+}
+.bills__select-waiter-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 5.3px 5px;
+  background-color: rgb(8, 160, 112);
+  color: white;
+}
+.bills__select-waiter-btn:hover {
+  color: rgb(8, 160, 112);
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  border-radius: 5px;
+}
+.bills__waiters-form {
+  display: none;
+}
+.bills__tables-form {
+  display: none;
+}
+.bills__tables-list {
+  background-color: rgb(8, 160, 112);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 5px;
+  border: none;
+}
+.bills__select-table-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 5.3px 5px;
+  background-color: rgb(8, 160, 112);
+  color: white;
+}
+.bills__select-table-btn:hover {
+  color: rgb(8, 160, 112);
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  border-radius: 5px;
+  padding: 5.3px 4px;
+}
+.bills__buttons {
+  display: none;
+}
+.bills__save-btn {
+  background-color: rgb(8, 160, 112);
+  color: white;
+}
+.bills__save-btn:hover {
+  color: rgb(8, 160, 112);
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 3px 4px;
+}
+.bills__cancel-btn {
+  background-color: rgb(8, 160, 112);
+  color: white;
+}
+.bills__cancel-btn:hover {
+  color: rgb(8, 160, 112);
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 3px 4px;
+}
+.bills__list {
+  margin-left: 41px;
+  display: flex;
+  height: min-content;
+}
+.bills__date {
+  color: rgb(117, 116, 116);
+  font-weight: 300;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.settings {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.settings__btn {
+  color: white;
+  background-color: rgb(8, 160, 112);
+  margin-bottom: 5px;
+}
+.settings__btn:hover {
+  color: #08a070;
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 4px 4px;
+}
+
+/*# sourceMappingURL=styles.css.map */

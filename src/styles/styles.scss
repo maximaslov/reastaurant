@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px auto 0 auto;
+    padding: 0 30px 0 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    background-color: rgb(8, 160, 112);
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    &__logo {
+            text-transform: uppercase;
+            font-size: 50%;
+    }
+    &__settings {
+        display: flex;
+    }
+    &__btn {
+        background-color: white;
+        color: #08a070;
+        &:not(:nth-child(2)) {
+            margin-right: 7px;
+        }
+        &:hover {
+            color: #02543a;
+        }
+    }
+    
+}
+
+.bills {
+    display: flex;
+    &__new-bill-block {
+        max-width: 245px;
+        width: 100%;    
+    }
+    &__new-template {
+        min-width: 245px;
+        width: 100%;
+    }
+    &__new-bill {
+        background-color: rgba(8, 160, 112, 0.336);
+        max-width: 245px;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin-bottom: 5px;
+        margin-right: 20px;
+        & h3 {
+            color: rgb(2, 84, 58);
+            text-transform: uppercase;
+            font-size: 90%;
+        }
+    }
+
+    &__create-new-btn {
+        color: white;
+        background-color: rgb(8, 160, 112);
+        &:hover {
+            color: #08a070;
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            padding: 4px 4px;
+        }
+    }
+                
+    &__waiters-list {
+        background-color: rgb(8, 160, 112);
+        color: white;
+        border-radius: 5px;
+        padding: 5px 5px;
+        border: none;
+    }
+    &__select-waiter-btn {
+        border: none;
+        border-radius: 5px;
+        padding: 5.3px 5px;
+        background-color: rgb(8, 160, 112);
+        color: white;
+        &:hover {
+            color: rgb(8, 160, 112);
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            border-radius: 5px;
+        }
+    }
+    &__waiters-form {
+        display: none;
+    }
+    &__tables-form {
+        display: none;
+    }
+    &__tables-list {
+        background-color: rgb(8, 160, 112);
+        color: white;
+        border-radius: 5px;
+        padding: 5px 5px;
+        border: none;
+    }
+    &__select-table-btn {
+        border: none;
+        border-radius: 5px;
+        padding: 5.3px 5px;
+        background-color: rgb(8, 160, 112);
+        color: white;
+        &:hover {
+            color: rgb(8, 160, 112);
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            border-radius: 5px;
+            padding: 5.3px 4px;
+        }
+    }
+    &__buttons {
+        display: none;
+    }
+    &__save-btn {
+        background-color: rgb(8, 160, 112);
+        color: white;
+        &:hover {
+            color: rgb(8, 160, 112);
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            padding: 3px 4px;
+        }
+    }
+    &__cancel-btn {
+        background-color: rgb(8, 160, 112);
+        color: white;
+        &:hover {
+            color: rgb(8, 160, 112);
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            padding: 3px 4px;
+        }
+    }
+    &__list {
+        margin-left: 41px;
+        display: flex;
+        height: min-content;
+    }
+
+    &__date {
+        color: rgb(117, 116, 116);
+        font-weight: 300;
+        font-size: 12px;
+        text-transform: lowercase;
+    }
+}
+
+.settings {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    &__btn {
+        color: white;
+        background-color: rgb(8, 160, 112);
+        margin-bottom: 5px;
+        &:hover {
+            color: #08a070;
+            background-color: white;
+            border: solid 1px rgb(2, 84, 58);
+            padding: 4px 4px;
+        }
+    }
+}
