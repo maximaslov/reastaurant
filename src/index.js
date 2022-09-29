@@ -3,6 +3,7 @@ import WaitersApi from "./waiters/WaitersApi.js";
 import KitchenApi from "./menu/KitchenApi.js";
 import BillsApi from "./bills/BillsApi.js";
 
+import { SETTINGS_MENU_DEL_BTN_CLASS, SETTINGS_MENU_ITEM } from "./settings/SettingsSelectors.js";
 import { tablesList, tablesForm, selectTableBtn } from "./tables/TablesDomElements.js";
 import { waitersList, waitersForm, selectWaiterBtn } from "./waiters/WaitersDomElements.js";
 import { NEW_BILL_CLASS, BILLS_SELCETED_TABBLE_CLASS, NEW_BILL_NAME_CLASS } from "./bills/BillsSelectors.js";
@@ -12,24 +13,27 @@ import {
 } from "./bills/BillsDomElements.js";
 
 import {
-    generateTablesHtml, 
+    generateTablesHtml,
     generateWaitersHtml, newBillTemplate, selelctedTableTemplate,
-    selelctedWaiterTemplate
-} from "./HtmlTemplates.js"
+    selelctedWaiterTemplate, menuSettingsHtmlTemplate
+} from "./HtmlTemplates.js";
+
+import {
+    menuSettingsBtn, menuSettings,
+    waitersSettingsBtn, tablesSettingsBtn
+} from './settings/SettingsDomElements.js'
 
 const ADD_FOOD_BTN_CLASS = 'bills__add-food-btn';
 const CLOSE_BILL_BTN_CLASS = 'bills__close-bill-btn';
 
+
 const HEADER_SETTINGS_BTN_CLASS = "btn-settings";
 const SETTINGS_BLOCK_CLASS = 'settings';
 const settinsBlock = document.querySelector('.' + SETTINGS_BLOCK_CLASS);
-const settingsBtn = document.querySelector('.' + HEADER_SETTINGS_BTN_CLASS)
+const settingsBtn = document.querySelector('.' + HEADER_SETTINGS_BTN_CLASS);
 
-//СОЗДАТЬ НОВЫЙ ДИВ В СПИСКЕ СТОЛОВ И СТОЛЫ ЗАПИХИВАТЬ ТУДА ПРИ ПОМОЩИ ИННЕРХТМЛ
-// ТОГДА НЕ ДОЛЖЕН ДУБЛИРОВАТЬСЯ СПИСОК
-
-
-let tablesArr = []
+let tablesArr = [];
+let menuList = [];
 
 getWaitersList()
     .then(list => renderWaitersList(list));
@@ -44,8 +48,11 @@ addBillBtn.addEventListener('click', onAddBillBtnClick);
 waitersForm.addEventListener('change', onSelectWaiterFormClick);
 tablesForm.addEventListener('change', onSelectTableFormClick);
 cancelBillBtn.addEventListener('click', onCancelBtnClick);
-createBillBtn.addEventListener('click', onCreateBillBtnClick)
+createBillBtn.addEventListener('click', onCreateBillBtnClick);
 settingsBtn.addEventListener('click', onSettingsBtnClick);
+menuSettingsBtn.addEventListener('click', onMenuSettingsBtnClick);
+menuSettings.addEventListener('click', onMenuSettingsClick);
+menuSettings.addEventListener('focusout', onMenuSettingsFocusout);
 
 function renderWaitersList(list) {
     const waitersHtml = list.map(generateWaitersHtml).join('');
@@ -60,8 +67,8 @@ function renderTablesList(list) {
 }
 
 function onAddBillBtnClick() {
-    changeAddBillBtnDisplay('none');
-    changeWaitersFormDisplay('block');
+    elementDisplay(addBillBtn, 'none');
+    elementDisplay(waitersForm, 'block');
 }
 
 function onSelectWaiterFormClick(e) {
@@ -79,12 +86,10 @@ function onSelectWaiterBtnClick(e) {
     const selectedWaiter = waitersList.value;
     
     //НЕ ПОНЯТНО КАК ПРОВАЛИДИРОВАТЬ ФОРМУ
-
-        changeWaitersFormDisplay('none');
-        addNewBillTemplate();
-        showSelectedWaiter(selectedWaiter);
-        changeTablesFormDisplay('block');
-    
+    elementDisplay(waitersForm, 'none')
+    addNewBillTemplate();
+    showSelectedWaiter(selectedWaiter);
+    elementDisplay(tablesForm, 'block');
     
     //Прочитать айди у элемента и передать в функцию
     //обработчика событий кнопки добавить
@@ -94,10 +99,9 @@ function onSelectWaiterBtnClick(e) {
 function onSelectTableBtnBtnClick(e) {
     e.preventDefault()
     const id = tablesList.value;
-    changeTablesFormDisplay('none');
+    elementDisplay(tablesForm, 'none');
     showSelectedTable(id);
-    changeTablesFormDisplay('none');
-    changeBillBtnsDisplay('block');
+    elementDisplay(billBtns, 'block');
 }
 
 function onCreateBillBtnClick() {
@@ -113,8 +117,8 @@ function onCreateBillBtnClick() {
     changeBillName();
     billList.prepend(newBill);
     createdBillTemplate(newBill);
-    changeBillBtnsDisplay('none');
-    changeAddBillBtnDisplay('block');
+    elementDisplay(billBtns, 'none');
+    elementDisplay(addBillBtn, 'block');
     clearBillForm();
 }
 
@@ -128,8 +132,8 @@ function createdBillTemplate(newBill) {
 
 function onCancelBtnClick() {
     deleteNewBill();
-    changeAddBillBtnDisplay('block');
-    changeBillBtnsDisplay('none');
+    elementDisplay(addBillBtn, 'block');
+    elementDisplay(billBtns, 'none');
     clearBillForm();
 }
 
@@ -155,10 +159,17 @@ function todayDate() {
 }
 
 function onSettingsBtnClick() {
-    console.log(42)
-    changeAddBillBtnDisplay('none');
-    changeSettingsBlockDisplay('block');
-
+    settingsBtn.classList.toggle('selected-btn');
+    if (settingsBtn.classList.contains('selected-btn')) {
+        elementDisplay(settinsBlock, 'block');
+        elementDisplay(billBlock, 'none');
+        
+    } else {
+        elementDisplay(settinsBlock, 'none');
+        elementDisplay(billBlock, 'flex');
+        hideMenuSettings();
+        menuSettingsBtn.classList.remove('selected-btn');
+    }
 }
 
 function addNewBillTemplate() {
@@ -185,65 +196,73 @@ function showSelectedTable(table) {
     newBill.insertAdjacentHTML('beforeend', tableItem);   
 }
 
+function onMenuSettingsBtnClick() {
+    menuSettingsBtn.classList.toggle('selected-btn');
+    if (menuSettingsBtn.classList.contains('selected-btn')) {
+        showMenuSettings();
+    } else {
+        hideMenuSettings()
+    }
+}
+
+function onMenuSettingsClick(e) {
+    const button = e.target;
+    const item = button.closest('.settings__menu-list');
+    const id = item.dataset.id;
+    if (button.classList.contains('settings__menu-del-btn')) {
+        removeMenuItem(id)
+            .then((list) => {
+                menuList = menuList.filter(item => item.id !== list.id);
+                renderMenuList(menuList);
+            })
+    }
+}               
+
+function onMenuSettingsFocusout(e) {
+    const dataItem = e.target;
+    const menuElem = dataItem.closest('.settings__menu-list');
+    const id = menuElem.dataset.id;
+    console.log(id)
+    if (dataItem.classList.contains('menuItem-title') ||
+        dataItem.classList.contains('menuItem-price')) {
+        changeMenuItems(id, dataItem.value)
+        .then(list => console.log(list))
+    }//НУЖНО В АПИ СДЕЛАТЬ ЧТОБЫ ПРИЛЕТАЛО ИМЕННО ТАЙТЛ И ПРАЙС ТАЙТЛ НЕЙМ ТАЙТЛ ПРАЙС
+}
+
+function changeMenuItems(id, data) {
+    return KitchenApi.changeData(id, data);
+}
+
+function removeMenuItem(id) {
+    return KitchenApi.delete(id);
+}
+function hideMenuSettings() {
+    elementDisplay(menuSettings, 'none')
+}
+
+function showMenuSettings() {
+    getMenuList();
+    elementDisplay(menuSettings, 'block')
+}
+
+function getMenuList() {
+    return KitchenApi.request()
+        .then((list) => {
+            menuList = list
+            renderMenuList(menuList);
+        });
+}
+
+function renderMenuList(list) {
+    const menuList = menuSettingsHtmlTemplate(list)
+    menuSettings.innerHTML = menuList;
+}
+
 function changeTableStatus(id, status) {
     return TablesApi.changeTableStatus(id, status);
 }
 
-// function selelctedWaiterTemplate(waiter) {
-//     return `
-//         <div class="bills__selected_waiter">Офіціянт: ${waiter}</div>
-//      `
-// }
-// function selelctedTableTemplate(id) {
-//     return `
-//         <div class="bills__selected_tabel" id="${id}">Стіл: №${id}</div>
-//     `
-// }
-
-// function newBillTemplate() {
-//     return `
-//     <div class="bills__new-bill">
-//         <h3 class="bills__new-name">Новий рахунок</h3>
-//     </div>
-//     `;
-// }
-
-// function generateWaitersHtml(res) {
-//     const { name, id } = res;
-//         return `
-//         <option class="bills__waiter" label="${name}" id="${id}">${name}</option>
-//     `
-// }
-
-// function generateTablesHtml(res) {
-//     const { id } = res;
-//     if (res.status) {
-//         return `<option class="bills__table" disabled label="№${id}" id="${id}">№${id}</option>`
-//     } else {
-//         return `
-//         <option class="bills__table" value="${id}" label="№${id}" id="${id}">№${id}</option>
-//     `
-//     }
-// }
-
-function changeWaitersFormDisplay(status) {
-    elementDisplay(waitersForm, status);
-}
-
-function changeTablesFormDisplay(status) {
-    elementDisplay(tablesForm, status);
-}
-
-function changeAddBillBtnDisplay(status) {
-    elementDisplay(addBillBtn, status);
-}
-function changeBillBtnsDisplay(status) {
-    elementDisplay(billBtns, status);
-}
-
-function changeSettingsBlockDisplay(status) {
-    elementDisplay(settinsBlock, status);
-}
 
 function elementDisplay(elem, status) {
     elem.style.display = status;

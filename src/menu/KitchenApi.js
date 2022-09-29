@@ -11,14 +11,25 @@ export default class KitchenApi {
             })
     }
 
-    // static changeTableStatus(id, status) {
-    //     return fetch(this.URL + id, {
-    //     method: 'PUT',
-    //     body: JSON.stringify({ status }),
-    //     headers: {
-    //         'Content-type': 'application/json',
-    //     }
-    // })
-    //         .catch((e) => alert(e.message));
-    // }
+    static delete(id) {
+        return fetch(this.URL + id, {
+            method: 'DELETE'
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+    }
+
+    static changeData(id, changes) {
+        return fetch(this.URL + id, {
+        method: 'PUT',
+        body: JSON.stringify({ changes }),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    })
+            .catch((e) => alert(e.message));
+    }
 }

@@ -1,3 +1,5 @@
+// import { menuSettingsBtn } from './settings/SettingsConstants';
+
 export function generateTablesHtml(res) {
     const { id } = res;
     if (res.status) {
@@ -36,8 +38,34 @@ export function selelctedWaiterTemplate(waiter) {
      `
 }
 
-// export function restaurantSettingsTemplate () {
-//     return `
-    
-//     `
-// }
+export function menuSettingsHtmlTemplate(menuItem) { {
+    let menuItems = '';
+
+    menuItem.forEach((item)=> {
+        menuItems += `
+        <tr class="settings__menu-list" data-id="${item.id}">
+            <td>
+            <input class="menuItem-title" value="${item.name}"></input>
+            </td>
+            <td>
+            <input class="menuItem-price" value="${item.price}"></input>
+            </td>
+            <td class="settings__menu-del-btn"><button class="settings__menu-del-btn">Видалити</button></td>
+        </tr>
+        `
+    })
+     
+    return `
+        <div class="settings__menu">
+        <table>
+            <tr class="settings__menu-main">
+                <th>Назва</th>
+                <th>Ціна</th>
+                <th></th>
+            </tr>
+                ${menuItems}
+        </table>
+        <button>Нова страва<button>
+    `;
+    }
+}

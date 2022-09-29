@@ -52,7 +52,7 @@ button {
     display: flex;
     &__new-bill-block {
         max-width: 245px;
-        width: 100%;    
+        width: 100%;
     }
     &__new-template {
         min-width: 245px;
@@ -183,4 +183,24 @@ button {
             padding: 4px 4px;
         }
     }
+}
+
+.menu-settings {
+    max-width: max-content;
+}
+
+.selected-btn {
+    color: black;
+    background-color: #e3f1a9db;
+
+    &:hover {
+        color: black;
+        background-color: #f0ffb6;
+        border: none;
+        padding: 5px 5px;
+    }
+}
+
+.menu-settings {
+    display: none;
 }
