@@ -1,3 +1,5 @@
+import style from  './styles/styles.css'
+
 import TablesApi from "./tables/TablesApi.js";
 import WaitersApi from "./waiters/WaitersApi.js";
 import KitchenApi from "./menu/KitchenApi.js";
