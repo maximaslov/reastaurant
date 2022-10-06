@@ -25,7 +25,7 @@ export default class KitchenApi {
     static changeData(id, changes) {
         return fetch(this.URL + id, {
         method: 'PUT',
-        body: JSON.stringify({ changes }),
+        body: JSON.stringify(changes),
         headers: {
             'Content-type': 'application/json',
         }

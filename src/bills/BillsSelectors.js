@@ -8,3 +8,5 @@ export const BILLS_SELCETED_TABBLE_CLASS = 'bills__selected_tabel';
 export const BILLS_LIST_CLASS = 'bills__list';
 export const NEW_BILL_TEMPLATE_CLASS = 'bills__new-template';
 export const NEW_BILL_NAME_CLASS = 'bills__new-name';
+export const ADD_FOOD_BTN_CLASS = 'bills__add-food-btn';
+export const CLOSE_BILL_BTN_CLASS = 'bills__close-bill-btn';

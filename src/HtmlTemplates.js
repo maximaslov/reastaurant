@@ -1,5 +1,3 @@
-// import { menuSettingsBtn } from './settings/SettingsConstants';
-
 export function generateTablesHtml(res) {
     const { id } = res;
     if (res.status) {
@@ -14,7 +12,7 @@ export function generateTablesHtml(res) {
 export function generateWaitersHtml(res) {
     const { name, id } = res;
         return `
-        <option class="bills__waiter" label="${name}" id="${id}">${name}</option>
+        <li class="bills__waiter" label="${name}" id="${id}">${name}</li>
     `
 }
 
@@ -45,12 +43,12 @@ export function menuSettingsHtmlTemplate(menuItem) { {
         menuItems += `
         <tr class="settings__menu-list" data-id="${item.id}">
             <td>
-            <input class="menuItem-title" value="${item.name}"></input>
+            <input class="menuItem-title" value="${item.title}"></input>
             </td>
             <td>
             <input class="menuItem-price" value="${item.price}"></input>
             </td>
-            <td class="settings__menu-del-btn"><button class="settings__menu-del-btn">Видалити</button></td>
+            <td class="settings__menu-del-btn"><button class="settings__menu-del-btn settings__btn">Видалити</button></td>
         </tr>
         `
     })
@@ -65,7 +63,18 @@ export function menuSettingsHtmlTemplate(menuItem) { {
             </tr>
                 ${menuItems}
         </table>
-        <button>Нова страва<button>
+        <button class="settings__menu-btn settings__btn">Нова страва<button>
     `;
     }
+}
+
+export function addNewMenuItemForm() {
+    return `
+        <form class="settings__menu-form">
+            <input class="settings__menu-title-input" placeholder="Введіть назву нової страви"></input>
+            <input class="settings__menu-price-input" placeholder="Введіть ціну нової страви"></input>
+            <button class="settings__menu-add-item settings__btn">Додати нову страву</button>
+            <button class="settings__menu-cancel-item settings__btn">Скасувати</button>
+        </form>
+    `
 }

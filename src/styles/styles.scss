@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style: none;
+}
 
 button {
     border: none;
@@ -106,6 +109,13 @@ button {
     }
     &__waiters-form {
         display: none;
+    }
+    &__waiter {
+        cursor: pointer;
+        background-color: white;
+        color: #02543a;
+        margin: 3px;
+        padding: 3px;
     }
     &__tables-form {
         display: none;

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+li {
+  list-style: none;
+}
+
 button {
   border: none;
   border-radius: 5px;
@@ -103,6 +107,13 @@ button {
 }
 .bills__waiters-form {
   display: none;
+}
+.bills__waiter {
+  cursor: pointer;
+  background-color: white;
+  color: #02543a;
+  margin: 3px;
+  padding: 3px;
 }
 .bills__tables-form {
   display: none;

@@ -1,8 +1,11 @@
-
+import TablesApi from './TablesApi';
+import { tablesList, tablesForm, selectTableBtn} from './TablesDomElements';
+import { NEW_BILL_CLASS } from '../bills/BillsSelectors';
+import { billBtns } from '../bills/BillsDomElements';
+import { elementDisplay } from '../index';
 
 export function renderTablesList(list) {
     const tables = list.map(generateTablesHtml).join('');
-
     tablesList.insertAdjacentHTML('beforeend', tables);
 }
 
@@ -14,10 +17,9 @@ export function onSelectTableFormClick(e) {
 export function onSelectTableBtnBtnClick(e) {
     e.preventDefault()
     const id = tablesList.value;
-    changeTablesFormDisplay('none');
+    elementDisplay(tablesForm, 'none');
     showSelectedTable(id);
-    changeTablesFormDisplay('none');
-    changeBillBtnsDisplay('block');
+    elementDisplay(billBtns, 'block');
 }
 
 export function showSelectedTable(table) {

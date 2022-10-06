@@ -1,4 +1,10 @@
-
+import { elementDisplay } from '../index';
+import { addNewBillTemplate } from '../bills/BillsFunctions';
+import { waitersList, waitersForm, selectWaiterBtn } from './WaitersDomElements';
+import { NEW_BILL_CLASS } from '../bills/BillsSelectors';
+import { tablesForm } from '../tables/TablesDomElements';
+import { generateWaitersHtml } from '../HtmlTemplates';
+import WaitersApi from './WaitersApi.js';
 
 export function renderWaitersList(list) {
 
@@ -12,24 +18,15 @@ export function onSelectWaiterFormClick(e) {
     selectWaiterBtn.addEventListener('click', onSelectWaiterBtnClick);
 }
 
-export function onSelectWaiterBtnClick(e) {
-    e.preventDefault()
-    const selectedWaiter = waitersList.value;
+export function onWaitersListClick(e) {
+    e.preventDefault();
+    const selectedWaiter = e.target.textContent
+
+    elementDisplay(waitersForm, 'none')
+    addNewBillTemplate();
+    showSelectedWaiter(selectedWaiter);
+    elementDisplay(tablesForm, 'block');
     
-    //НЕ ПОНЯТНО КАК ПРОВАЛИДИРОВАТЬ ФОРМУ
-    if (selectedWaiter) {
-        changeWaitersFormDisplay('none');
-        addNewBillTemplate();
-        showSelectedWaiter(selectedWaiter);
-        changeTablesFormDisplay('block');
-    } else {
-        alert('Оберіть офіціянта');
-    }
-    
-    
-    //Прочитать айди у элемента и передать в функцию
-    //обработчика событий кнопки добавить
-    //ЕСЛИ НЕ ВЫБРАН ОФИЦИАНТ ТО АЛЕРТ
 }
 
 export function showSelectedWaiter(waiter) {
@@ -45,22 +42,11 @@ export function selelctedWaiterTemplate(waiter) {
      `
 }
 
-export function generateWaitersHtml(res) {
-    const { name, id } = res;
-        return `
-        <option class="bills__waiter" label="${name}" id="${id}">${name}</option>
-    `
-}
 
 export function changeWaitersFormDisplay(status) {
     elementDisplay(waitersForm, status);
 }
 
-// renderWaitersList()
-// onSelectWaiterFormClick()
-// onSelectWaiterBtnClick()
-// showSelectedWaiter()
-// selelctedWaiterTemplate()
-// generateWaitersHtml()
-// changeWaitersFormDisplay()
-// changeWaitersFormDisplay()
+export function getWaitersList() {
+    return WaitersApi.request();
+}
