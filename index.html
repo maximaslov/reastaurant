@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="module" src="./index.js"></script>
+    <title>Restaurant</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="loading">
+        <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif" alt="loading..." />
+    </div>
+    <div class="container">
+        <header class="header">
+                <div class="header__logo">
+                    <a href="/index.html"><h1>Управління рестораном</h1></a>
+                </div>
+                <div class="header__settings">
+                    <button class="header__btn btn-settings">Налаштування</button>
+                    <button class="header__btn btn-bills">Архів рахунків</button>
+                </div>
+        </header>
+    
+        <section class="bills">
+                <div class="bills__new-bill-block">
+                    <button class="bills__create-new-btn">Новий рахунок</button>
+                    <div class="bills__new-template">
+                    </div>
+
+                    <form class="bills__form">
+
+                        <h4>Оберіть офіціянта</h4>
+                            <select class="bills__waiters-list" required="required">  
+                            </select>
+
+                        <h4>Оберіть стіл</h4>
+                            <select class="bills__tables-list" required="required">
+                            </select>
+                        <br>
+                        <button class="bills__button btn-bills">Створити рахунок</button>
+                        <button class="bills__cancel-btn btn-bills">Скасувати</button>
+                    </form>
+                </div>
+                <div class="bills__list-container">
+                    <h3 class="bills__text">Відкриті рахунки</h3>
+                    <div class="bills__list">
+                </div>
+                </div>
+                    
+        </section>
+
+        <section class="bills-archive"></section>
+        <section class="settings">
+            <button class="settings__btn settings__btn--menu">Управління меню</button>
+            <button class="settings__btn settings__btn--waiters">Управління офіціянтами</button>
+            <button class="settings__btn settings__btn--tables">Управління столами</button>
+        </section>
+        <section class="menu-settings"></section>
+        <section class="waiters-settings"></section>
+        <section class="tables-settings"></section>
+    </div>
+
+</body>
+</html>
