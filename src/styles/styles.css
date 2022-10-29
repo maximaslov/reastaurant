@@ -90,6 +90,13 @@ button {
   color: #03d190;
   border: solid 1px #03d190;
 }
+@media (max-width: 1180px) {
+  .header__btn:hover {
+    color: white;
+    border: solid 0.5px white;
+    background-color: rgb(40, 40, 40);
+  }
+}
 
 .bills {
   display: flex;
@@ -180,6 +187,7 @@ button {
 }
 .bills__tables-list {
   background-color: rgb(8, 160, 112);
+  border-radius: 0px;
   color: white;
   padding: 5px 5px;
   border: none;
@@ -415,7 +423,7 @@ button {
 }
 @media (max-width: 540px) {
   .settings__menu-title-input-container {
-    width: 110%;
+    width: 130%;
   }
 }
 .settings__waiters-input-container {
@@ -502,6 +510,7 @@ button {
 @media (max-width: 720px) {
   .loading img {
     width: 30px;
+    height: 30px;
   }
 }
 
@@ -548,7 +557,7 @@ button {
 
 .waiter-name {
   border-radius: 0px;
-  border: solid 0.1px black;
+  border: solid 0.2px black;
   padding-left: 2px;
 }
 

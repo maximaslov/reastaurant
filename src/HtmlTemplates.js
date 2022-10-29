@@ -226,8 +226,8 @@ export function modalWindow(billId, tableId, list) {
     list.forEach((item)=> {
         menuItems += `
         <div class="bills__menu-item" data-id="${item.id}">
-            <p class="menuItem-title" data-id="${item.title}">${item.title}</p>
-            <p class="menuItem-price" data-id="${item.price}">${item.price}</p>
+            <p class="menuItem-modal-title" data-id="${item.title}">${item.title}</p>
+            <p class="menuItem-modal-price" data-id="${item.price}">${item.price}</p>
             <button class="bills__menu-add-btn settings__btn">Додати до замовлення</button>
         </div>
         `
