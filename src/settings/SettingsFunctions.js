@@ -9,7 +9,7 @@ import {
     loadingElem, 
     tablesSettingsBtn
 } from './SettingsDomElements';
-import { billBlock , billsArchiveBtn, billsArchiveSection} from '../bills/BillsDomElements';
+import { billBlock , billsArchiveBtn, billsArchiveSection, mainContainer} from '../bills/BillsDomElements';
 import { getMenuList } from '../kitchen/KitchenFunctions';
 import {tablesSettings} from '../tables/TablesDomElements'
 
@@ -51,8 +51,11 @@ export function onMenuSettingsBtnClick() {
 
 export function showLoader(){
     elementDisplay(loadingElem, 'flex');
+    elementDisplay(mainContainer, 'none');
+
 }
 
 export function hideLoader(){
     elementDisplay(loadingElem, 'none');
+    elementDisplay(mainContainer, 'block');
 }

@@ -34,7 +34,6 @@ export function getOpenBillsList () {
     .then(list => {
         billsItemsList = list.reverse();
         renderOpenBillsList(billsItemsList);
-        hideLoader();
     })
 }
 
