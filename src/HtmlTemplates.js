@@ -38,7 +38,7 @@ export function menuSettingsHtmlTemplate(list) { {
     list.forEach((item)=> {
         menuItems += `
         <tr class="settings__menu-item" data-id="${item.id}">
-            <td>
+            <td class="settings__menu-title-input-container">
             <input class="menuItem-title" value="${item.title}"></input>
             </td>
             <td>
@@ -71,7 +71,7 @@ export function waitersSettingsHtmlTemplate(list) { {
     list.forEach((item)=> {
         waitersItems += `
         <tr class="settings__waiters-item" data-id="${item.id}">
-            <td>
+            <td class="settings__waiters-input-container">
             <input class="waiter-name" value="${item.name}"></input>
             </td>
             <td><button class="settings__waiter-del-btn">Видалити</button></td>
