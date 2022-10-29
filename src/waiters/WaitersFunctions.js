@@ -86,6 +86,7 @@ export function onWaitersSettingsClick(e) {
 
     if(button.classList.contains(SETTINGS_WAITERS_ADD_BTN_CLASS)) {
         button.classList.toggle('selected-btn');
+        button.classList.toggle('cancel-btn');
         
         if(button.classList.contains('selected-btn')){
             button.textContent = 'Скасувати';
@@ -104,6 +105,7 @@ export function onWaitersSettingsClick(e) {
         showLoader();
         const newWaiterName = document.querySelector('.' + SETTINGS_NAME_INPUT_CLASS).value;
         if(!newWaiterName){
+            hideLoader();
             const error = document.querySelector('.' + SETTINGS_WAITERS_INPUT_ERROR_CLASS);
             elementDisplay(error, 'block');
         } else {

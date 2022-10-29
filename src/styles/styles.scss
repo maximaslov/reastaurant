@@ -340,7 +340,11 @@ button {
         justify-content: space-between;
         align-items: center;
     }
-    &__menu-main{
+    &__menu-form {
+        max-width: 1140px;
+        width: 100%;
+    }
+    &__menu-main {
         @media (max-width: 535px) {
             display: none;
         }
@@ -369,6 +373,10 @@ button {
     }
     &__menu-price-input {
         margin: 2px 0 4px 0;
+        border-radius: 0px;
+        border: solid 0.2px black;
+        max-width: 90px;
+        width: 100%;
     }
     &__waiter-del-btn {
         background-color: rgb(218, 75, 9);
@@ -382,6 +390,13 @@ button {
         }
     }
 
+    &__waiter-name-input {
+        border: solid 0.2px black;
+        border-radius: none;
+        max-width: 210px;
+        width: 100%;
+    }
+
     &__table-del-btn {
         background-color: rgb(218, 75, 9);
         padding: 2px 4px;
@@ -392,6 +407,16 @@ button {
             border: solid 1px rgb(2, 84, 58);
             padding: 1px 3px;
         }
+    }
+    &__menu-form-area {
+        max-width: 1140px;
+        width: 100%;
+    }
+    &__menu-title-input {
+        border: solid 0.2px black;
+        border-radius: 0px;
+        max-width: 200px;
+        width: 100%;
     }
     &__menu-title-input-container {
         width: 60%;
@@ -420,7 +445,10 @@ button {
         color: black;
         background-color: #f0ffb6;
         padding: 5px 5px;
-        
+        @media (max-width: 1180px) {
+            background-color: white;
+            border: solid 1px #02543a;
+        }
     }
 }
 
@@ -530,4 +558,9 @@ button {
     border-radius: 0px;
     border: solid 0.2px black;
     padding-left: 2px;
+}
+
+.cancel-btn {
+    color: white;
+    background-color: rgb(218, 75, 9);
 }

@@ -63,6 +63,7 @@ export function onMenuSettingsClick(e) {
     if(button.classList.contains(SETTINGS_MENU_ADD_BTN_CLASS)) {
         
         button.classList.toggle('selected-btn');
+        button.classList.toggle('cancel-btn');
         
         if(button.classList.contains('selected-btn')){
             button.textContent = 'Скасувати';
