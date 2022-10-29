@@ -1,3 +1,7 @@
+body {
+  width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +26,7 @@ button {
 .container {
   max-width: 1200px;
   width: 100%;
-  margin: 10px auto 0 auto;
+  margin: 10px auto;
   padding: 0 30px 0 30px;
   position: relative;
 }
@@ -244,20 +248,30 @@ button {
   text-transform: lowercase;
 }
 .bills__modal-window {
-  background-color: rgba(204, 204, 204, 0.778);
   position: absolute;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 0 40% 0 7%;
   padding: 20px;
 }
-.bills__cancel-modal-btn {
-  max-width: 110px;
-  margin: 10px auto 10px auto;
-  width: 100%;
-  background-color: rgb(218, 75, 9);
-  color: white;
-  padding: 4px;
+@media (max-width: 745px) {
+  .bills__modal-window {
+    margin: 0 40% 0 5%;
+  }
+}
+@media (max-width: 530px) {
+  .bills__modal-window {
+    margin: 0 40% 0 3%;
+  }
+}
+@media (max-width: 420px) {
+  .bills__modal-window {
+    margin: 0 40% 0 2%;
+  }
+}
+@media (max-width: 420px) {
+  .bills__modal-window {
+    margin: 0 40% 0 1%;
+  }
 }
 .bills__menu-items {
   display: flex;
@@ -267,6 +281,21 @@ button {
   text-align: center;
   width: 100%;
   background-color: white;
+  box-shadow: 0px 5px 30px #02543a;
+}
+@media (max-width: 1200px) {
+  .bills__menu-items {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+.bills__cancel-modal-btn {
+  max-width: 110px;
+  margin: 10px auto 10px auto;
+  width: 100%;
+  background-color: rgb(218, 75, 9);
+  color: white;
+  padding: 4px;
 }
 .bills__menu-item {
   margin: 10px auto 10px auto;

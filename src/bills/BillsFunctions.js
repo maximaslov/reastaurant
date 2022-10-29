@@ -24,7 +24,8 @@ import { changeTableStatus } from '../tables/TablesFunctions';
 import BillsApi from './BillsApi';
 import KitchenApi from '../kitchen/KitchenApi';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import { settingsBtn, settingsBlock } from '../settings/SettingsDomElements';
+import { settingsBtn, settingsBlock , waitersSettings, menuSettings, menuSettingsBtn, waitersSettingsBtn, tablesSettingsBtn} from '../settings/SettingsDomElements';
+import {tablesSettings} from '../tables/TablesDomElements'
 
 let billsItemsList = [];
 
@@ -104,6 +105,12 @@ export function onBillsArchiveBtnClick (e) {
         elementDisplay(billsSection, 'none');
         elementDisplay(billsArchiveSection, 'flex');
         elementDisplay(settingsBlock, 'none');
+        elementDisplay(waitersSettings, 'none');
+        elementDisplay(menuSettings, 'none');
+        elementDisplay(tablesSettings, 'none');
+        menuSettingsBtn.classList.remove('selected-btn');
+        waitersSettingsBtn.classList.remove('selected-btn');
+        tablesSettingsBtn.classList.remove('selected-btn');
         settingsBtn.classList.remove('selected-btn');
         showLoader();
         showBillsArchive();
