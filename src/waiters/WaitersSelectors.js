@@ -1,3 +1,11 @@
 export const WAITERS_FORM_CLASS = 'bills__waiters-form';
 export const WAITERS_LIST_CLASS = 'bills__waiters-list';
-export const SELECT_WAITER_BTN_CLASS = 'bills__select-waiter-btn';
+export const WAITERS_SETTINGS_DEL_ITEM_BTN_CLASS = 'settings__waiter-del-btn';
+export const WAITERS_SETTINGS_ITEM_CLASS = 'settings__waiters-item';
+export const SETTINGS_WAITERS_ADD_BTN_CLASS = 'settings__waiters-btn';
+export const SETTINGS_WAITERS_FORM_CLASS = 'settings__waiter-form';
+export const ADD_NEW_WAITERS_ITEM_BTN_CLASS = 'settings__waiters-add-item';
+export const WAITERS_FORM_AREA_CLASS = 'settings__waiters-form-area';
+export const SETTINGS_NAME_INPUT_CLASS = 'settings__waiter-name-input';
+export const SETTINGS_WAITERS_INPUT_ERROR_CLASS = 'settings__waiters-error';
+export const SETTINGS_INPUT_WAITER_NAME_CLASS = 'waiter-name';

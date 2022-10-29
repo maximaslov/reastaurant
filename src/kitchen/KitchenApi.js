@@ -32,4 +32,20 @@ export default class KitchenApi {
     })
             .catch((e) => alert(e.message));
     }
+
+    static create(menuItem) {
+        return fetch(this.URL, {
+        method: 'POST',
+        body: JSON.stringify(menuItem),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    })  
+        .then(item => {
+            if(item.ok){
+                return item.json();
+            }
+        })
+        .catch((e) => alert(e.message));
+    }
 }

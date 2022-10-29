@@ -1,19 +1,23 @@
 import style from  './styles/styles.css'
-import normalize from  './styles/normalize.css'
+import normalize from  './styles/normalize.css';
 
-import { tablesForm } from './tables/TablesDomElements';
 import { waitersList } from './waiters/WaitersDomElements';
-import { addBillBtn, createBillBtn, cancelBillBtn } from './bills/BillsDomElements';
-import { menuSettingsBtn, menuSettings, settingsBtn } from './settings/SettingsDomElements';
+import { addBillBtn, createBillBtn, cancelBillBtn , billsArchiveBtn, activeBill, billList, mainContainer} from './bills/BillsDomElements';
+import { menuSettingsBtn, menuSettings, settingsBtn , waitersSettingsBtn, waitersSettings, tablesSettingsBtn} from './settings/SettingsDomElements';
 
-import { renderTablesList, getTablesList, onSelectTableFormClick } from './tables/TablesFunctions';
-import { onAddBillBtnClick, onCreateBillBtnClick, onCancelBillBtnClick } from './bills/BillsFunctions';
-import { onWaitersListClick, renderWaitersList, getWaitersList } from './waiters/WaitersFunctions';
-import { onMenuSettingsClick, onMenuSettingsFocusout , onMenuSettingsAddBtnClick} from './kitchen/KitchenFunctions';
-import {onSettingsBtnClick, onMenuSettingsBtnClick} from './settings/SettingsFunctions'
+import { renderTablesList, getTablesList, onTablesListClick, onTablesSettingsBtnClick, onTablesSettingsClick } from './tables/TablesFunctions';
+import { onAddBillBtnClick, onCreateBillBtnClick, onCancelBillBtnClick , onBillsArchiveBtnClick, getOpenBillsList, renderOpenBillsList, onBillsListClick, onMainContainerClick} from './bills/BillsFunctions';
+import { onWaitersListClick, renderWaitersList, getWaitersList , onWaitersSettingsClick, onWaitersSettingsBtnClick, onWaitersSettingsFocusout} from './waiters/WaitersFunctions';
+import { onMenuSettingsClick, onMenuSettingsFocusout } from './kitchen/KitchenFunctions';
+import {onSettingsBtnClick, onMenuSettingsBtnClick , showLoader, hideLoader} from './settings/SettingsFunctions'
+import {tablesList, tablesSettings} from './tables/TablesDomElements'
+import { BILLS_MODAL_CANCEL_BTN_CLASS , BILLS_MODAL_WINDOW_CLASS} from './bills/BillsSelectors';
+import { modalWindow } from './HtmlTemplates';
+
 
 export let tablesArr = [];
 
+showLoader();
 getTablesList()
     .then((list) => {
         tablesArr = list;
@@ -22,18 +26,29 @@ getTablesList()
 
 getWaitersList()
     .then(list => renderWaitersList(list));
+    hideLoader();
+
+getOpenBillsList()
+    
 
 addBillBtn.addEventListener('click', onAddBillBtnClick);
-waitersList.addEventListener('click', onWaitersListClick);
-tablesForm.addEventListener('change', onSelectTableFormClick);
 cancelBillBtn.addEventListener('click', onCancelBillBtnClick);
 createBillBtn.addEventListener('click', onCreateBillBtnClick);
 settingsBtn.addEventListener('click', onSettingsBtnClick);
 menuSettingsBtn.addEventListener('click', onMenuSettingsBtnClick);
+waitersSettingsBtn.addEventListener('click', onWaitersSettingsBtnClick);
+tablesSettingsBtn.addEventListener('click', onTablesSettingsBtnClick);
+
 menuSettings.addEventListener('click', onMenuSettingsClick);
 menuSettings.addEventListener('focusout', onMenuSettingsFocusout);
-menuSettings.addEventListener('click', onMenuSettingsAddBtnClick);
+waitersSettings.addEventListener('click', onWaitersSettingsClick);
+waitersSettings.addEventListener('focusout', onWaitersSettingsFocusout);
+tablesSettings.addEventListener('click', onTablesSettingsClick);
+billsArchiveBtn.addEventListener('click', onBillsArchiveBtnClick);
+billList.addEventListener('click', onBillsListClick);
+mainContainer.addEventListener('click', onMainContainerClick);
 
 export function elementDisplay(elem, status) {
     elem.style.display = status;
 }
+

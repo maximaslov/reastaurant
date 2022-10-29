@@ -1,3 +1,13 @@
 export const SELECT_TABLE_BTN_CLASS = 'bills__select-table-btn';
 export const TABLES_LIST_CLASS = 'bills__tables-list';
 export const TABLES_FORM_CLASS = 'bills__tables-form';
+export const SETTINGS_TABLES_BTN_CLASS = 'settings__btn--tables';
+export const TABLES_SETTINGS_BLOCK = 'tables-settings';
+export const TABLES_SETTINGS_DEL_ITEM_BTN_CLASS = 'settings__table-del-btn';
+export const TABLES_SETTINGS_ITEM_CLASS = 'settings__tables-item';
+export const SETTINGS_TABLES_ADD_BTN_CLASS = 'settings__tables-btn';
+export const TABLES_FORM_AREA_CLASS = 'settings__tables-form-area';
+export const SETTINGS_TABLES_FORM_CLASS = 'settings__tables-form';
+export const ADD_NEW_TABLES_ITEM_BTN_CLASS = 'settings__tables-add-item';
+export const SETTINGS_TABLE_INPUT_CLASS = 'settings__table-name-input';
+export const SETTINGS_TABLES_INPUT_ERROR_CLASS = 'settings__tables-error';

@@ -10,13 +10,16 @@
     <title>Restaurant</title>
 <script defer src="main.js"></script></head>
 <body>
+    <div class="loading">
+        <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif" alt="loading..." />
+    </div>
     <div class="container">
         <header class="header">
                 <div class="header__logo">
-                    <h1>Управління рестораном</h1>
+                    <a href="#"><h1>Управління рестораном</h1></a>
                 </div>
                 <div class="header__settings">
-                    <button class="header__btn btn-settings">Налаштування ресторану</button>
+                    <button class="header__btn btn-settings">Налаштування</button>
                     <button class="header__btn btn-bills">Архів рахунків</button>
                 </div>
         </header>
@@ -25,40 +28,40 @@
                 <div class="bills__new-bill-block">
                     <button class="bills__create-new-btn">Новий рахунок</button>
                     <div class="bills__new-template">
-                    
                     </div>
-                    <div class="bills__waiters-form">
-                        <div class="bills__waiters-list">
-                                <h3 class="bills__text">Оберіть офіціянта</h3>
-                        </div>
-                    </div>
-                    <form class="bills__tables-form">
-                        <select class="bills__tables-list" required="required">
-                                <option class="bills__table" disabled selected>Оберіть номер стола</option>
-                        </select>
-                        <input class="bills__select-table-btn" type="submit" value="Обрати">
+
+                    <form class="bills__form">
+
+                        <h4>Оберіть офіціянта</h4>
+                            <select class="bills__waiters-list" required="required">  
+                            </select>
+
+                        <h4>Оберіть стіл</h4>
+                            <select class="bills__tables-list" required="required">
+                            </select>
+                        <br>
+                        <button class="bills__button btn-bills">Створити рахунок</button>
+                        <button class="bills__cancel-btn btn-bills">Скасувати</button>
                     </form>
-                    
-                    <div class="bills__buttons">
-                        <button class="bills__save-btn">Створити рахунок</button>
-                        <button class="bills__cancel-btn">Скасувати</button>
-                    </div>
                 </div>
-                
-                <div class="bills__list">
-                    
+                <div class="bills__list-container">
+                    <h3 class="bills__text">Відкриті рахунки</h3>
+                    <div class="bills__list">
                 </div>
+                </div>
+                    
         </section>
+
+        <section class="bills-archive"></section>
         <section class="settings">
             <button class="settings__btn settings__btn--menu">Управління меню</button>
-            <button class="settings__btn settings__btn--vaiters">Управління офіціянтами</button>
+            <button class="settings__btn settings__btn--waiters">Управління офіціянтами</button>
             <button class="settings__btn settings__btn--tables">Управління столами</button>
         </section>
-        <section class="menu-settings">
-
-        </section>
+        <section class="menu-settings"></section>
+        <section class="waiters-settings"></section>
+        <section class="tables-settings"></section>
     </div>
-
 
 </body>
 </html>

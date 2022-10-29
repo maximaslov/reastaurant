@@ -1,9 +1,9 @@
 export const MENU_SETTINGS_BTN_CLASS = 'settings__btn--menu';
-export const WAITERS_SETTINGS_BTN_CLASS = 'settings__btn--vaiters';
+export const WAITERS_SETTINGS_BTN_CLASS = 'settings__btn--waiters';
 export const TABLES_SETTINGS_BTN_CLASS = 'settings__btn--tables';
-// export const MENU_SETTINGS_CLASS = 'menu-settings';
-export const MENU_SETTINGS_CLASS = 'settings__menu';
+export const MENU_SETTINGS_CLASS = 'menu-settings';
+export const WAITERS_SETTINGS_CLASS = 'waiters-settings';
 export const SETTINGS_MENU_DEL_BTN_CLASS = 'settings__menu-del-btn';
-export const SETTINGS_MENU_ITEM = 'settings__menu-list';
 export const HEADER_SETTINGS_BTN_CLASS = "btn-settings";
 export const SETTINGS_BLOCK_CLASS = 'settings';
+export const LOADING_CLASS = 'loading';

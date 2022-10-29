@@ -1,79 +1,225 @@
-import { newBillTemplate } from '../HtmlTemplates';
-import { newBillElem , addBillBtn, billList, billBtns} from './BillsDomElements';
-import { NEW_BILL_NAME_CLASS, NEW_BILL_CLASS, BILLS_SELCETED_TABBLE_CLASS } from './BillsSelectors';
-import { elementDisplay} from '../index';
-import { waitersForm, waitersList } from '../waiters/WaitersDomElements';
-import { changeTableStatus, getTablesList, renderTablesList } from '../tables/TablesFunctions';
-import {tablesList} from '../tables/TablesDomElements';
+import { newBillTemplate , archiveListTemplate, modalWindow} from '../HtmlTemplates';
+import { 
+    addBillBtn, 
+    billList, 
+    billsSection, 
+    billsArchiveSection, 
+    billsForm, 
+    billsWaitersList, 
+    billsTablesList, 
+    mainContainer , billsText} from './BillsDomElements';
+import { 
+    BILLS_CANCEL_BTN_CLASS, 
+    ACTIVE_BILL_CLASS, 
+    ACTIVE_BILL_TABLE, 
+    ADD_ORDER_BTN_CLASS, 
+    BILLS_CLOSE_BILL_BTN_CLASS, 
+    BILLS_MODAL_CANCEL_BTN_CLASS, 
+    BILLS_MODAL_WINDOW_CLASS, 
+    BILLS_MENU_ADD_BTN_CLASS, 
+    BILLS_TOTAL_PRICE_CLASS 
+} from './BillsSelectors';
+import { elementDisplay } from '../index';
+import { changeTableStatus } from '../tables/TablesFunctions';
+import BillsApi from './BillsApi';
+import KitchenApi from '../kitchen/KitchenApi';
+import { showLoader, hideLoader } from '../settings/SettingsFunctions';
+import { settingsBtn, settingsBlock } from '../settings/SettingsDomElements';
 
-export function addNewBillTemplate() {
-    const newBill = newBillTemplate();
-    newBillElem.insertAdjacentHTML('afterbegin', newBill);
+let billsItemsList = [];
+
+export function getOpenBillsList () {
+    return BillsApi.request()
+    .then(list => {
+        billsItemsList = list.reverse();
+        renderOpenBillsList(billsItemsList);
+        hideLoader();
+    })
 }
 
-export function createdBillTemplate(newBill) {
-    const addFoodBtn = `<button class="bills__add-food-btn">Додати до замовлення</button>`;
-    const closeBillBtn = `<button class="bills__close-bill-btn">Закрити рахунок</button>`
-    const totalPrice = `<p>Загальна сумма: 777грн</p>`;
-
-    insertDataToBill(newBill, totalPrice, addFoodBtn, closeBillBtn)
+function addNewBill (table, waiter, data) {
+    const newBill = {
+        "status": true,
+        table,
+        waiter,
+        data,
+        kitchen: [],
+        "totalprice":0,
+        }
+    BillsApi.create(newBill)
+        .then(() => {
+            getOpenBillsList().then(() => {
+                hideLoader();
+            });
+        });
 }
 
-function insertDataToBill(newBill, totalPrice, addFoodBtn, closeBillBtn) {
-    newBill.insertAdjacentHTML('beforeend', totalPrice);
-    newBill.insertAdjacentHTML('beforeend', addFoodBtn);
-    newBill.insertAdjacentHTML('beforeend', closeBillBtn);
-}
-
-export function changeBillName() {
-    const id = 1 //Нужно передать сюда id c апи счетов
-    const billName = document.querySelector('.' + NEW_BILL_NAME_CLASS);
-    const now = todayDate();
-
-    billName.innerHTML = `Рахунок № ${id} <br/><span class="bills__date">від ${now} </span>`
-}
-
-function todayDate() {
-    const date = new Date;
-    const now = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}
-     ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-    return now
+export function renderOpenBillsList(list) {
+    const item = list.map(newBillTemplate).join('');
+    billList.innerHTML = item;
 }
 
 export function onAddBillBtnClick() {
     elementDisplay(addBillBtn, 'none');
-    elementDisplay(waitersForm, 'block');
+    elementDisplay(billsForm, 'block');
 }
 
-export function onCreateBillBtnClick() {
-    const selectedTable = document.querySelector('.' + BILLS_SELCETED_TABBLE_CLASS);
-    const id = selectedTable.id;
-    changeTableStatus(id, 'true');
-    getTablesList()
-    .then(list => renderTablesList(list));
-    const newBill = document.querySelector('.' + NEW_BILL_CLASS);
-    changeBillName();
-    billList.prepend(newBill);
-    createdBillTemplate(newBill);
-    elementDisplay(billBtns, 'none');
+export function onCreateBillBtnClick(e) {
+    e.preventDefault();
+    showLoader();
+    const selectedWaiter = billsWaitersList.value;
+    const selectedTable = billsTablesList.value;
+    const now = todayDate();
+
+    changeTableStatus(selectedTable, true);
+
+    addNewBill(selectedTable, selectedWaiter, now);
+    elementDisplay(billsForm, 'none');
     elementDisplay(addBillBtn, 'block');
-    clearBillForm();
 }
 
-export function onCancelBillBtnClick() {
-    deleteNewBill();
+function todayDate() {
+    const date = new Date;
+    const month = date.getMonth().toString();
+    const minutes = date.getMinutes().toString();
+    const seconds = date.getSeconds().toString();
+
+    const now = `${date.getDate()}.${month.padStart(2, "0")}.${date.getFullYear()}
+    ${date.getHours()}:${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}`
+    
+    return now;
+}
+
+export function onCancelBillBtnClick(e) {
+    e.preventDefault();
+    elementDisplay(billsForm, 'none');
     elementDisplay(addBillBtn, 'block');
-    elementDisplay(billBtns, 'none');
-    clearBillForm();
 }
 
-export function clearBillForm() {
-    waitersList.value = 'Оберіть офіціянта';
-    tablesList.value = 'Оберіть номер стола';
+export function onBillsArchiveBtnClick (e) {
+    const btn = e.target;
+    btn.classList.toggle('selected-btn');
+
+    if(btn.classList.contains('selected-btn')) {
+        elementDisplay(billsSection, 'none');
+        elementDisplay(billsArchiveSection, 'flex');
+        elementDisplay(settingsBlock, 'none');
+        settingsBtn.classList.remove('selected-btn');
+        showLoader();
+        showBillsArchive();
+    } else {
+        elementDisplay(billsSection, 'flex');
+        elementDisplay(billsArchiveSection, 'none')
+    }
 }
 
+export function onBillsListClick(e) {
+    const button = e.target;
+    const bill = button.closest('.' + ACTIVE_BILL_CLASS);
+    const table = bill.querySelector('.' + ACTIVE_BILL_TABLE)
+    const billId = bill.dataset.id;
+    const tableId = table.dataset.id;
+    const totalPrice = bill.querySelector('.' + BILLS_TOTAL_PRICE_CLASS).dataset.id;
+   
+    if (button.classList.contains(BILLS_CANCEL_BTN_CLASS)) {
+        showLoader();
+        changeTableStatus(tableId, false);
+        deleteActiveBill(billId);
+    }
+    if (button.classList.contains(BILLS_CLOSE_BILL_BTN_CLASS)) {  
+        showLoader();      
+        changeTableStatus(tableId, false);
+        closeBill(billId, totalPrice);
+    }
+    if (button.classList.contains(ADD_ORDER_BTN_CLASS)) {
+        showModalWindow(billId, tableId);
+    }
+}
 
-function deleteNewBill() {
-    const newBill = document.querySelector('.' + NEW_BILL_CLASS);
-    newBill.remove();
+function closeBill(id, totalPrice){
+    BillsApi.changeBillTotalPrice(id, totalPrice)
+        .then(() => {
+            BillsApi.changeBillStatus(id, false)
+                .then(item => {
+                    const newList = billsItemsList.filter(e => e.id !== item.id);
+                    renderOpenBillsList(newList);
+                    hideLoader();
+             });
+        });
+}
+
+function deleteActiveBill(id){
+    BillsApi.delete(id)
+    .then(item => {
+        billsItemsList = billsItemsList.filter(e => e.id !== item.id);
+        renderOpenBillsList(billsItemsList);
+        hideLoader();
+    });
+}
+
+function showBillsArchive () {
+    BillsApi.request()
+        .then(list => {
+            const reverseList = list.reverse();
+            renderBillsArchiveList(reverseList);
+            hideLoader();
+        });
+}
+
+function renderBillsArchiveList(list) {
+    const archiveList = list.map(archiveListTemplate).join('');
+    billsArchiveSection.innerHTML = archiveList;
+}
+
+function showModalWindow(billId, tableId) {
+    KitchenApi.request()
+        .then(list => {
+            renderKitchenList(billId, tableId, list);
+        })
+}
+
+function renderKitchenList (billId, tableId, list){
+    const kitchenList = modalWindow(billId, tableId, list);
+    mainContainer.insertAdjacentHTML('afterbegin', kitchenList);
+}
+
+export function onMainContainerClick(e) {
+    const clickElem = e.target;
+    const mainModalWindow = document.querySelector('.' + BILLS_MODAL_WINDOW_CLASS);
+
+    if (clickElem.classList.contains(BILLS_MODAL_CANCEL_BTN_CLASS)){
+        mainModalWindow.remove();
+    };
+
+    if (clickElem.classList.contains(BILLS_MENU_ADD_BTN_CLASS)) {
+        const priceElem = clickElem.previousElementSibling;
+        const titleElem = priceElem.previousElementSibling;
+        const price = priceElem.dataset.id;
+        const title = titleElem.dataset.id;
+        const billId = mainModalWindow.dataset.id;
+        showLoader();
+        addOdrerTobill(billId, title, price);
+    }
+}
+
+function addOdrerTobill(billId, title, price){
+    const mainModalWindow = document.querySelector('.' + BILLS_MODAL_WINDOW_CLASS);
+
+    BillsApi.getOneBill(billId)
+    .then(res => {
+        let kitchenList = res.kitchen;
+        const newItem = { 
+                title,
+                price,
+            }
+        kitchenList.push(newItem);
+        BillsApi.addOrder(billId, kitchenList)
+                .then((item) => {
+                    billsItemsList = billsItemsList.map(elem => elem.id === item.id ? item : elem);
+                    renderOpenBillsList(billsItemsList);
+                    mainModalWindow.remove()
+                    hideLoader();
+            });
+            
+    })
 }
