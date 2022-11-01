@@ -607,7 +607,7 @@ button {
   width: 100%;
   height: 1000px;
   position: absolute;
-  background-color: rgba(204, 204, 204, 0.572);
+  background-color: rgba(204, 204, 204, 0.187);
   padding-top: 100px;
   z-index: 1;
 }
@@ -625,8 +625,14 @@ button {
   margin-top: 200px;
   height: fit-content;
 }
+@media (max-width: 1180px) {
+  .loading img {
+    margin-top: 80px;
+  }
+}
 @media (max-width: 720px) {
   .loading img {
+    margin-top: 80px;
     width: 30px;
     height: 30px;
   }
