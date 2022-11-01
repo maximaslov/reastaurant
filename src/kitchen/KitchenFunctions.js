@@ -15,7 +15,8 @@ import {
     MENU_FORM_ERROR_CLASS, 
     MENU_FORM_AREA_CLASS
 } from './KitchenSelectors'
-import {showLoader, hideLoader} from '../settings/SettingsFunctions'
+import { showLoader, hideLoader } from '../settings/SettingsFunctions';
+import {SETTINGS_MENU_BTN_STYLE_CLASS} from '../settings/SettingsSelectors';
 
 export let menuList = [];
 
@@ -61,12 +62,10 @@ export function onMenuSettingsClick(e) {
     }
 
     if(button.classList.contains(SETTINGS_MENU_ADD_BTN_CLASS)) {
+        button.classList.toggle(CANCEL_BTN_CLASS);
+        button.classList.toggle(SETTINGS_MENU_BTN_STYLE_CLASS);
         
-        // button.classList.toggle('selected-btn');
-        button.classList.toggle('cancel-btn');
-        button.classList.toggle('settings__menu-btn-style');
-        
-        if(button.classList.contains('cancel-btn')){
+        if(button.classList.contains(CANCEL_BTN_CLASS)){
             button.textContent = 'Скасувати';
             showCreateNewMenuItemForm(SETTINGS_MENU_ADD_BTN_CLASS);
             
@@ -136,7 +135,3 @@ function CreateNewMenuItem (title, price) {
             hideLoader();
         });
 }
-
-
-
-//каждый раз когда происходят любые взаимодействия со счетами, нужно обновлять billKithenList = item.kitchen ??

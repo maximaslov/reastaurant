@@ -1,10 +1,8 @@
 import TablesApi from './TablesApi';
-import { tablesList, tablesForm , tablesSettings } from './TablesDomElements';
-import { NEW_BILL_CLASS } from '../bills/BillsSelectors';
-import { billBtns } from '../bills/BillsDomElements';
+import { tablesList, tablesSettings } from './TablesDomElements';
 import { elementDisplay } from '../index';
-import { generateTablesHtml, tablesSettingsHtmlTemplate , addNewWaiterForm, addNewTableForm} from '../HtmlTemplates';
-import { hideLoader , showLoader} from '../settings/SettingsFunctions';
+import { generateTablesHtml, tablesSettingsHtmlTemplate } from '../HtmlTemplates';
+import { hideLoader, showLoader } from '../settings/SettingsFunctions';
 import { 
     menuSettings, 
     tablesSettingsBtn, 
@@ -12,8 +10,8 @@ import {
     menuSettingsBtn, 
     waitersSettingsBtn
 } from '../settings/SettingsDomElements';
-import {TABLES_SETTINGS_DEL_ITEM_BTN_CLASS, TABLES_SETTINGS_ITEM_CLASS, SETTINGS_TABLES_ADD_BTN_CLASS, TABLES_FORM_AREA_CLASS, SETTINGS_TABLES_FORM_CLASS, ADD_NEW_TABLES_ITEM_BTN_CLASS, SETTINGS_TABLE_INPUT_CLASS, SETTINGS_TABLES_INPUT_ERROR_CLASS} from './TablesSelectors'
-import {removeWaitersItem} from '../waiters/WaitersFunctions'
+import {TABLES_SETTINGS_DEL_ITEM_BTN_CLASS, TABLES_SETTINGS_ITEM_CLASS, SETTINGS_TABLES_ADD_BTN_CLASS } from './TablesSelectors';
+import {SELECTED_BTN_CLASS} from '../../GeneralSelectors';
 
 let tablesListArr = [];
 
@@ -22,46 +20,35 @@ export function renderTablesList(list) {
     tablesList.innerHTML = tables;
 }
 
-export function onTablesListClick(e) {
-    e.stopPropagation();
-    const table = e.target;
-    const id = table.dataset.id;
-
-    elementDisplay(tablesForm, 'none');
-    showSelectedTable(id);
-    elementDisplay(billBtns, 'block');
-}
-
-export function showSelectedTable(id) {
-    const newBill = document.querySelector('.' + NEW_BILL_CLASS);
-    const tableItem = selelctedTableTemplate(id);
-
-    newBill.insertAdjacentHTML('beforeend', tableItem);   
-}
-
 export function onTablesSettingsBtnClick() {
-    tablesSettingsBtn.classList.toggle('selected-btn');
-    if (tablesSettingsBtn.classList.contains('selected-btn')) {
+    tablesSettingsBtn.classList.toggle(SELECTED_BTN_CLASS);
+    if (tablesSettingsBtn.classList.contains(SELECTED_BTN_CLASS)) {
         showLoader();
-        menuSettingsBtn.classList.remove('selected-btn');
-        waitersSettingsBtn.classList.remove('selected-btn');
-        elementDisplay(menuSettings, 'none');
-        elementDisplay(waitersSettings, 'none');
+        showTablesSettingsSection();
         getTablesList()
             .then(list => {
                 tablesListArr = list;
                 renderTablesSettingsList(tablesListArr);
                 hideLoader();
             });
-        elementDisplay(tablesSettings, 'block');
     } else {
-        elementDisplay(tablesSettings, 'none');
+        hideTablesSettingsSection();
     }
 }
 
-export function onTablesSettingsClick(e) {
-    e.stopPropagation();
+function showTablesSettingsSection() {
+    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    elementDisplay(menuSettings, 'none');
+    elementDisplay(waitersSettings, 'none');
+    elementDisplay(tablesSettings, 'block');
+}
 
+function hideTablesSettingsSection() {
+    elementDisplay(tablesSettings, 'none');
+}
+
+export function onTablesSettingsClick(e) {
     const button = e.target;
 
     if(button.classList.contains(TABLES_SETTINGS_DEL_ITEM_BTN_CLASS)){
@@ -71,27 +58,11 @@ export function onTablesSettingsClick(e) {
 
         removeTablseItem(id)
             .then((list) => {
-                console.table(list)
                 tablesListArr = tablesListArr.filter(item => item.id !== list.id);
                 renderTablesSettingsList(tablesListArr);
                 hideLoader();
         });
     }
-
-    // if(button.classList.contains(SETTINGS_TABLES_ADD_BTN_CLASS)) {
-    //     button.classList.toggle('selected-btn');
-        
-    //     if(button.classList.contains('selected-btn')){
-    //         button.textContent = 'Скасувати';
-    //         showCreateNewTableForm();
-            
-    //     } 
-    //     else {
-    //         button.textContent = 'Додати стіл';
-    //         const form = document.querySelector('.' + SETTINGS_TABLES_FORM_CLASS);
-    //         elementDisplay(form, 'none');
-    //     }
-    // }
 
     if(button.classList.contains(SETTINGS_TABLES_ADD_BTN_CLASS)) {
         showLoader();
@@ -103,12 +74,6 @@ export function onTablesSettingsClick(e) {
             });
     }
 }
-
-// function showCreateNewTableForm () {
-//     const formTemplate = addNewTableForm();
-//     const formArea = document.querySelector('.' + TABLES_FORM_AREA_CLASS);
-//     formArea.innerHTML = formTemplate;
-// }
 
 function removeTablseItem(id) {
     return TablesApi.delete(id);
@@ -128,7 +93,7 @@ export function renderTablesSettingsList(list) {
 }
 
 function createNewTable() {
-    return TablesApi.create()
+    return TablesApi.create();
 }
 
 export function getTablesList() {

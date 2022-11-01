@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/styles.css">
     <script type="module" src="./index.js"></script>
     <title>Restaurant</title>
 </head>
 <body>
-    <div class="loading">
+    <div class="loading" style="display: none">
         <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif" alt="loading..." />
     </div>
     <div class="container">
-        <header class="header">
+        <header class="header" style="display: none">
                 <div class="header__logo">
                     <a href=""><h1>Управління рестораном</h1></a>
                 </div>
@@ -24,7 +22,7 @@
                 </div>
         </header>
     
-        <section class="bills">
+        <section class="bills" style="display: none">
                 <div class="bills__new-bill-block">
                     <button class="bills__create-new-btn">Новий рахунок</button>
                     <div class="bills__new-template">
@@ -53,7 +51,7 @@
         </section>
 
         <section class="bills-archive"></section>
-        <section class="settings">
+        <section class="settings" style="display: none">
             <button class="settings__btn settings__btn--menu">Управління меню</button>
             <button class="settings__btn settings__btn--waiters">Управління офіціянтами</button>
             <button class="settings__btn settings__btn--tables">Управління столами</button>

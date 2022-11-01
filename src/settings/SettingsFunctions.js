@@ -11,48 +11,64 @@ import {
 } from './SettingsDomElements';
 import { billBlock , billsArchiveBtn, billsArchiveSection, mainContainer} from '../bills/BillsDomElements';
 import { getMenuList } from '../kitchen/KitchenFunctions';
-import {tablesSettings} from '../tables/TablesDomElements'
+import { tablesSettings } from '../tables/TablesDomElements'
+import {SELECTED_BTN_CLASS} from '../../GeneralSelectors'
 
 export function onSettingsBtnClick() {
-    settingsBtn.classList.toggle('selected-btn');
+    settingsBtn.classList.toggle(SELECTED_BTN_CLASS);
     
-    if (settingsBtn.classList.contains('selected-btn')) {
-        elementDisplay(settingsBlock, 'flex');
-        elementDisplay(billBlock, 'none');
-        elementDisplay(billsArchiveSection, 'none');
-        billsArchiveBtn.classList.remove('selected-btn');
+    if (settingsBtn.classList.contains(SELECTED_BTN_CLASS)) {
+        showOnlySettingsSection();
         
     } else {
-        elementDisplay(settingsBlock, 'none');
-        elementDisplay(billBlock, 'flex');
-        elementDisplay(menuSettings, 'none');
-        elementDisplay(waitersSettings, 'none');
-        elementDisplay(tablesSettings, 'none');
-        menuSettingsBtn.classList.remove('selected-btn');
-        waitersSettingsBtn.classList.remove('selected-btn');
-        tablesSettingsBtn.classList.remove('selected-btn');
+        hideSettingsSection();
     }
 }
 
+function showOnlySettingsSection() {
+    elementDisplay(settingsBlock, 'flex');
+    elementDisplay(billBlock, 'none');
+    elementDisplay(billsArchiveSection, 'none');
+    billsArchiveBtn.classList.remove(SELECTED_BTN_CLASS);
+}
+
+function hideSettingsSection() {
+    elementDisplay(settingsBlock, 'none');
+    elementDisplay(billBlock, 'flex');
+    elementDisplay(menuSettings, 'none');
+    elementDisplay(waitersSettings, 'none');
+    elementDisplay(tablesSettings, 'none');
+    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+}
+
 export function onMenuSettingsBtnClick() {
-    menuSettingsBtn.classList.toggle('selected-btn');
-    if (menuSettingsBtn.classList.contains('selected-btn')) {
+    menuSettingsBtn.classList.toggle(SELECTED_BTN_CLASS);
+    if (menuSettingsBtn.classList.contains(SELECTED_BTN_CLASS)) {
         getMenuList();
         showLoader();
-        waitersSettingsBtn.classList.remove('selected-btn');
-        tablesSettingsBtn.classList.remove('selected-btn');
-        elementDisplay(waitersSettings, 'none');
-        elementDisplay(tablesSettings, 'none');
-        elementDisplay(menuSettings, 'block');
+        showMenuSettings();
     } else {
-        elementDisplay(menuSettings, 'none');
+        hideMenuSettings()
     }
+}
+
+function showMenuSettings() {
+    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    elementDisplay(waitersSettings, 'none');
+    elementDisplay(tablesSettings, 'none');
+    elementDisplay(menuSettings, 'block');
+}
+
+function hideMenuSettings() {
+    elementDisplay(menuSettings, 'none');
 }
 
 export function showLoader(){
     elementDisplay(loadingElem, 'flex');
     elementDisplay(mainContainer, 'none');
-
 }
 
 export function hideLoader(){

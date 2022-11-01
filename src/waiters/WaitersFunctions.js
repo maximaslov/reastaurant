@@ -14,9 +14,11 @@ import {
     ADD_NEW_WAITERS_ITEM_BTN_CLASS, 
     SETTINGS_NAME_INPUT_CLASS, 
     SETTINGS_WAITERS_INPUT_ERROR_CLASS, 
-    SETTINGS_INPUT_WAITER_NAME_CLASS 
+    SETTINGS_INPUT_WAITER_NAME_CLASS , 
+  WAITERS_MENU_BTN_STYLE_CLASS
 } from './WaitersSelectors';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
+import {CANCEL_BTN_CLASS} from '../../GeneralSelectors'
 
 export let waitersListArr = [];
 
@@ -51,20 +53,28 @@ export function onWaitersSettingsBtnClick() {
     waitersSettingsBtn.classList.toggle('selected-btn');
     if (waitersSettingsBtn.classList.contains('selected-btn')) {
         showLoader();
-        menuSettingsBtn.classList.remove('selected-btn');
-        tablesSettingsBtn.classList.remove('selected-btn');
-        elementDisplay(menuSettings, 'none');
-        elementDisplay(tablesSettings, 'none');
+        showWaitersSettingsSection();
         getWaitersList()
             .then(list => {
                 waitersListArr = list;
                 renderWaitersSettingsList(list);
                 hideLoader();
-    })
-        elementDisplay(waitersSettings, 'block');
+            });
     } else {
-        elementDisplay(waitersSettings, 'none');
-    }
+        hideWaitersSettingsSection();
+        }
+}
+
+function showWaitersSettingsSection() {
+    menuSettingsBtn.classList.remove('selected-btn');
+    tablesSettingsBtn.classList.remove('selected-btn');
+    elementDisplay(menuSettings, 'none');
+    elementDisplay(tablesSettings, 'none');
+    elementDisplay(waitersSettings, 'block');
+}
+
+function hideWaitersSettingsSection() {
+    elementDisplay(waitersSettings, 'none');
 }
 
 export function onWaitersSettingsClick(e) {
@@ -85,14 +95,12 @@ export function onWaitersSettingsClick(e) {
     }
 
     if(button.classList.contains(SETTINGS_WAITERS_ADD_BTN_CLASS)) {
-        // button.classList.toggle('selected-btn');
-        button.classList.toggle('cancel-btn');
-        button.classList.toggle('settings__waiters-btn-style');
+        button.classList.toggle(CANCEL_BTN_CLASS);
+        button.classList.toggle(WAITERS_MENU_BTN_STYLE_CLASS);
         
-        if(button.classList.contains('cancel-btn')){
+        if(button.classList.contains(CANCEL_BTN_CLASS)){
             button.textContent = 'Скасувати';
             showCreateNewWaiterForm();
-            
         } 
         else {
             button.textContent = 'Додати офіціянта';
@@ -107,12 +115,16 @@ export function onWaitersSettingsClick(e) {
         const newWaiterName = document.querySelector('.' + SETTINGS_NAME_INPUT_CLASS).value;
         if(!newWaiterName){
             hideLoader();
-            const error = document.querySelector('.' + SETTINGS_WAITERS_INPUT_ERROR_CLASS);
-            elementDisplay(error, 'block');
+            showWaitersError();
         } else {
             createNewWaiter(newWaiterName);
         }
     }
+}
+
+function showWaitersError() {
+    const error = document.querySelector('.' + SETTINGS_WAITERS_INPUT_ERROR_CLASS);
+    elementDisplay(error, 'block');
 }
 
 export function onWaitersSettingsFocusout(e) {

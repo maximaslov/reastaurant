@@ -7,7 +7,8 @@ import {
     billsForm, 
     billsWaitersList, 
     billsTablesList, 
-    mainContainer , billsText} from './BillsDomElements';
+    mainContainer
+} from './BillsDomElements';
 import { 
     BILLS_CANCEL_BTN_CLASS, 
     ACTIVE_BILL_CLASS, 
@@ -17,24 +18,34 @@ import {
     BILLS_MODAL_CANCEL_BTN_CLASS, 
     BILLS_MODAL_WINDOW_CLASS, 
     BILLS_MENU_ADD_BTN_CLASS, 
-    BILLS_TOTAL_PRICE_CLASS , 
-    BILLS_ITEMS_MODAL_WINDOW_CLASS
+    BILLS_TOTAL_PRICE_CLASS
 } from './BillsSelectors';
 import { elementDisplay } from '../index';
 import { changeTableStatus } from '../tables/TablesFunctions';
 import BillsApi from './BillsApi';
 import KitchenApi from '../kitchen/KitchenApi';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import { settingsBtn, settingsBlock , waitersSettings, menuSettings, menuSettingsBtn, waitersSettingsBtn, tablesSettingsBtn} from '../settings/SettingsDomElements';
-import {tablesSettings} from '../tables/TablesDomElements'
+import { 
+    settingsBtn, 
+    settingsBlock, 
+    waitersSettings, 
+    menuSettings, 
+    menuSettingsBtn, 
+    waitersSettingsBtn, 
+    tablesSettingsBtn
+} from '../settings/SettingsDomElements';
+import { tablesSettings } from '../tables/TablesDomElements'
+import {SELECTED_BTN_CLASS} from '../../GeneralSelectors'
 
 let billsItemsList = [];
 
-export function getOpenBillsList () {
+export function getOpenBillsList() {
+    showLoader();
     return BillsApi.request()
     .then(list => {
         billsItemsList = list.reverse();
         renderOpenBillsList(billsItemsList);
+        hideLoader();
     })
 }
 
@@ -46,7 +57,7 @@ function addNewBill (table, waiter, data) {
         data,
         kitchen: [],
         "totalprice":0,
-        }
+        };
     BillsApi.create(newBill)
         .then(() => {
             getOpenBillsList().then(() => {
@@ -99,25 +110,33 @@ export function onCancelBillBtnClick(e) {
 
 export function onBillsArchiveBtnClick (e) {
     const btn = e.target;
-    btn.classList.toggle('selected-btn');
+    btn.classList.toggle(SELECTED_BTN_CLASS);
 
-    if(btn.classList.contains('selected-btn')) {
-        elementDisplay(billsSection, 'none');
-        elementDisplay(billsArchiveSection, 'flex');
-        elementDisplay(settingsBlock, 'none');
-        elementDisplay(waitersSettings, 'none');
-        elementDisplay(menuSettings, 'none');
-        elementDisplay(tablesSettings, 'none');
-        menuSettingsBtn.classList.remove('selected-btn');
-        waitersSettingsBtn.classList.remove('selected-btn');
-        tablesSettingsBtn.classList.remove('selected-btn');
-        settingsBtn.classList.remove('selected-btn');
+    if(btn.classList.contains(SELECTED_BTN_CLASS)) {
+        showOnlyArchiveSection();
+        removeSelectedClassFromBtns();
         showLoader();
         showBillsArchive();
     } else {
         elementDisplay(billsSection, 'flex');
         elementDisplay(billsArchiveSection, 'none')
     }
+}
+
+function showOnlyArchiveSection() {
+    elementDisplay(billsSection, 'none');
+    elementDisplay(billsArchiveSection, 'flex');
+    elementDisplay(settingsBlock, 'none');
+    elementDisplay(waitersSettings, 'none');
+    elementDisplay(menuSettings, 'none');
+    elementDisplay(tablesSettings, 'none');
+}
+
+function removeSelectedClassFromBtns() {
+    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    settingsBtn.classList.remove(SELECTED_BTN_CLASS);
 }
 
 export function onBillsListClick(e) {
@@ -193,7 +212,7 @@ function renderKitchenList (billId, tableId, list){
 export function onMainContainerClick(e) {
     const clickElem = e.target;
     const mainModalWindow = document.querySelector('.' + BILLS_MODAL_WINDOW_CLASS);
-    
+
     if (clickElem.classList.contains(BILLS_MODAL_CANCEL_BTN_CLASS)
     || clickElem === mainModalWindow){
         mainModalWindow.remove();
@@ -217,17 +236,16 @@ function addOdrerTobill(billId, title, price){
     .then(res => {
         let kitchenList = res.kitchen;
         const newItem = { 
-                title,
-                price,
-            }
+            title,
+            price,
+        }
         kitchenList.push(newItem);
         BillsApi.addOrder(billId, kitchenList)
-                .then((item) => {
-                    billsItemsList = billsItemsList.map(elem => elem.id === item.id ? item : elem);
-                    renderOpenBillsList(billsItemsList);
-                    mainModalWindow.remove()
-                    hideLoader();
+            .then((item) => {
+                billsItemsList = billsItemsList.map(elem => elem.id === item.id ? item : elem);
+                renderOpenBillsList(billsItemsList);
+                mainModalWindow.remove()
+                hideLoader();
             });
-            
-    })
+    });
 }

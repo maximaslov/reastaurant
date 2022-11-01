@@ -9,3 +9,4 @@ export const WAITERS_FORM_AREA_CLASS = 'settings__waiters-form-area';
 export const SETTINGS_NAME_INPUT_CLASS = 'settings__waiter-name-input';
 export const SETTINGS_WAITERS_INPUT_ERROR_CLASS = 'settings__waiters-error';
 export const SETTINGS_INPUT_WAITER_NAME_CLASS = 'waiter-name';
+export const WAITERS_MENU_BTN_STYLE_CLASS = 'settings__waiters-btn-style';

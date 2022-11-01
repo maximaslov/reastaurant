@@ -13,8 +13,7 @@ import {
     BILLS_FORM_CLASS, 
     BILLS_WAITERS_LIST_CLASS, 
     BILLS_TABLES_LIST_CLASS, 
-    ACTIVE_BILL_CLASS, 
-  BILLS_TEXT_CLASS
+    ACTIVE_BILL_CLASS,
 } from './BillsSelectors'
 
 export const billBlock = document.querySelector('.' + BILL_BLOCK_CLASS);
