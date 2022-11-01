@@ -59,7 +59,7 @@ export function menuSettingsHtmlTemplate(list) { {
             </tr>
                 ${menuItems}
         </table>
-        <button class="settings__menu-btn settings__btn">Нова страва</button>
+        <button class="settings__menu-btn settings__menu-btn-style">Нова страва</button>
         <div class="settings__menu-form-area"><div/>
     `;
     }
@@ -87,7 +87,7 @@ export function waitersSettingsHtmlTemplate(list) { {
             </tr>
                 ${waitersItems}
         </table>
-        <button class="settings__waiters-btn settings__btn">Додати офіціянта</button>
+        <button class="settings__waiters-btn settings__waiters-btn-style">Додати офіціянта</button>
         <div class="settings__waiters-form-area"><div/>
     `;
     }

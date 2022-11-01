@@ -26,3 +26,4 @@ export const MAIN_CONTAINER_CLASS = 'container';
 export const BILLS_MODAL_CANCEL_BTN_CLASS = 'bills__cancel-modal-btn';
 export const BILLS_MENU_ADD_BTN_CLASS = 'bills__menu-add-btn';
 export const BILLS_TOTAL_PRICE_CLASS = 'bills__total-price';
+export const BILLS_ITEMS_MODAL_WINDOW_CLASS = 'bills__menu-items';

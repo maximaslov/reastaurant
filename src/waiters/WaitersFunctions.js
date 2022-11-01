@@ -85,10 +85,11 @@ export function onWaitersSettingsClick(e) {
     }
 
     if(button.classList.contains(SETTINGS_WAITERS_ADD_BTN_CLASS)) {
-        button.classList.toggle('selected-btn');
+        // button.classList.toggle('selected-btn');
         button.classList.toggle('cancel-btn');
+        button.classList.toggle('settings__waiters-btn-style');
         
-        if(button.classList.contains('selected-btn')){
+        if(button.classList.contains('cancel-btn')){
             button.textContent = 'Скасувати';
             showCreateNewWaiterForm();
             

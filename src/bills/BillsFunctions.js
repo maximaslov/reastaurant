@@ -17,7 +17,8 @@ import {
     BILLS_MODAL_CANCEL_BTN_CLASS, 
     BILLS_MODAL_WINDOW_CLASS, 
     BILLS_MENU_ADD_BTN_CLASS, 
-    BILLS_TOTAL_PRICE_CLASS 
+    BILLS_TOTAL_PRICE_CLASS , 
+    BILLS_ITEMS_MODAL_WINDOW_CLASS
 } from './BillsSelectors';
 import { elementDisplay } from '../index';
 import { changeTableStatus } from '../tables/TablesFunctions';
@@ -192,8 +193,9 @@ function renderKitchenList (billId, tableId, list){
 export function onMainContainerClick(e) {
     const clickElem = e.target;
     const mainModalWindow = document.querySelector('.' + BILLS_MODAL_WINDOW_CLASS);
-
-    if (clickElem.classList.contains(BILLS_MODAL_CANCEL_BTN_CLASS)){
+    
+    if (clickElem.classList.contains(BILLS_MODAL_CANCEL_BTN_CLASS)
+    || clickElem === mainModalWindow){
         mainModalWindow.remove();
     };
 

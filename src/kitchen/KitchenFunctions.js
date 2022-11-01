@@ -62,12 +62,13 @@ export function onMenuSettingsClick(e) {
 
     if(button.classList.contains(SETTINGS_MENU_ADD_BTN_CLASS)) {
         
-        button.classList.toggle('selected-btn');
+        // button.classList.toggle('selected-btn');
         button.classList.toggle('cancel-btn');
+        button.classList.toggle('settings__menu-btn-style');
         
-        if(button.classList.contains('selected-btn')){
+        if(button.classList.contains('cancel-btn')){
             button.textContent = 'Скасувати';
-            showCreateNewMenuItemForm();
+            showCreateNewMenuItemForm(SETTINGS_MENU_ADD_BTN_CLASS);
             
         } else {
             button.textContent = 'Нова страва';

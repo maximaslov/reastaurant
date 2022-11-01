@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
 body {
   width: 100%;
+  font-family: "Open Sans", sans-serif;
+  animation: 1s show ease;
 }
 
 * {
@@ -117,8 +120,12 @@ button {
 .bills__button:hover {
   background-color: #02543a;
 }
+.bills__button-style {
+  margin-bottom: 5px;
+}
 .bills__form {
   display: none;
+  animation: 1s show ease;
 }
 .bills__new-bill-block {
   max-width: 245px;
@@ -155,6 +162,7 @@ button {
 .bills__create-new-btn {
   color: white;
   background-color: rgb(8, 160, 112);
+  animation: 1s show ease;
 }
 .bills__create-new-btn:hover {
   color: #08a070;
@@ -243,6 +251,7 @@ button {
   max-width: 100%;
   padding: 0 0 23px 0;
   border: solid 1px;
+  animation: 1s show ease;
 }
 @media (max-width: 560px) {
   .bills__list-container {
@@ -265,32 +274,44 @@ button {
   text-transform: lowercase;
 }
 .bills__modal-window {
+  display: flex;
+  justify-content: center;
   position: absolute;
-  width: 80%;
   margin: 0 40% 0 7%;
+  max-width: 1140px;
+  width: 96%;
+  margin: 0 auto;
   padding: 20px;
+  animation: 500ms show ease;
+}
+@media (max-width: 1200px) {
+  .bills__modal-window {
+    width: 97%;
+  }
 }
 @media (max-width: 745px) {
   .bills__modal-window {
-    margin: 0 40% 0 5%;
+    margin: 0 30% 0 0%;
+    width: 90%;
   }
 }
 @media (max-width: 530px) {
   .bills__modal-window {
-    margin: 0 40% 0 3%;
+    margin: 0 0 0 -1%;
   }
 }
 @media (max-width: 420px) {
   .bills__modal-window {
-    margin: 0 40% 0 2%;
+    margin: 0 40% 0 -3%;
   }
 }
-@media (max-width: 420px) {
+@media (max-width: 330px) {
   .bills__modal-window {
-    margin: 0 40% 0 1%;
+    margin: 0 0 0 -5%;
   }
 }
 .bills__menu-items {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -298,7 +319,7 @@ button {
   text-align: center;
   width: 100%;
   background-color: white;
-  box-shadow: 0px 5px 30px #02543a;
+  box-shadow: 0px 0px 300px rgba(2, 84, 58, 0.7568627451);
 }
 @media (max-width: 1200px) {
   .bills__menu-items {
@@ -327,6 +348,7 @@ button {
   width: 100;
   justify-content: space-between;
   align-items: flex-start;
+  animation: 1s show ease;
 }
 @media (max-width: 535px) {
   .settings {
@@ -343,6 +365,12 @@ button {
   background-color: white;
   border: solid 1px rgb(2, 84, 58);
   padding: 4px 4px;
+}
+@media (max-width: 1180px) {
+  .settings__btn:hover {
+    color: white;
+    background-color: rgb(8, 160, 112);
+  }
 }
 .settings__input-error {
   color: red;
@@ -365,9 +393,19 @@ button {
   justify-content: space-between;
   align-items: center;
 }
+.settings__menu {
+  animation: 1s show ease;
+}
+.settings__waiters {
+  animation: 1s show ease;
+}
+.settings__tables {
+  animation: 1s show ease;
+}
 .settings__menu-form {
   max-width: 1140px;
   width: 100%;
+  animation: 1s show ease;
 }
 @media (max-width: 535px) {
   .settings__menu-main {
@@ -392,6 +430,12 @@ button {
   border: solid 1px rgb(2, 84, 58);
   padding: 1px 3px;
 }
+@media (max-width: 1180px) {
+  .settings__menu-del-btn:hover {
+    color: white;
+    background-color: rgb(218, 75, 9);
+  }
+}
 @media (max-width: 535px) {
   .settings__menu-del-btn {
     margin-top: 5px;
@@ -414,6 +458,9 @@ button {
   background-color: white;
   border: solid 1px rgb(2, 84, 58);
   padding: 1px 3px;
+}
+.settings__waiter-form {
+  animation: 1s show ease;
 }
 .settings__waiter-name-input {
   border: solid 0.2px black;
@@ -453,9 +500,47 @@ button {
 .settings__waiters-input-container {
   width: 60%;
 }
-
-.bills-archive {
-  display: none;
+.settings__waiter-name-input {
+  border-radius: 0px;
+  margin: 5px 0 5px 0;
+}
+.settings__menu-title-input {
+  border-radius: 0px;
+  margin: 5px 0 5px 0;
+}
+.settings__menu-btn-style {
+  color: white;
+  background-color: rgb(8, 160, 112);
+  margin-bottom: 5px;
+}
+.settings__menu-btn-style:hover {
+  color: #08a070;
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 4px 4px;
+}
+@media (max-width: 1180px) {
+  .settings__menu-btn-style:hover {
+    color: white;
+    background-color: rgb(8, 160, 112);
+  }
+}
+.settings__waiters-btn-style {
+  color: white;
+  background-color: rgb(8, 160, 112);
+  margin-bottom: 5px;
+}
+.settings__waiters-btn-style:hover {
+  color: #08a070;
+  background-color: white;
+  border: solid 1px rgb(2, 84, 58);
+  padding: 4px 4px;
+}
+@media (max-width: 1180px) {
+  .settings__waiters-btn-style:hover {
+    color: white;
+    background-color: rgb(8, 160, 112);
+  }
 }
 
 .menu-settings {
@@ -497,6 +582,7 @@ button {
   width: 100%;
   box-shadow: 5px 5px 10px rgba(2, 84, 58, 0.1333333333);
   margin: 10px;
+  animation: 1s show ease;
 }
 
 .active-bill-item {
@@ -535,6 +621,8 @@ button {
 .loading img {
   max-width: 100px;
   width: 100%;
+  height: 100%;
+  margin-top: 200px;
   height: fit-content;
 }
 @media (max-width: 720px) {
@@ -594,6 +682,23 @@ button {
 .cancel-btn {
   color: white;
   background-color: rgb(218, 75, 9);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
