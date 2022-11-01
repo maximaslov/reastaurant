@@ -17,6 +17,7 @@ import {
 } from './KitchenSelectors'
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
 import {SETTINGS_MENU_BTN_STYLE_CLASS} from '../settings/SettingsSelectors';
+import {CANCEL_BTN_CLASS} from '../../GeneralSelectors'
 
 export let menuList = [];
 

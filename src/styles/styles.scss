@@ -57,12 +57,14 @@ button {
                 display: none;
             }
     }
+
     &__settings {
         display: flex;
         @media (max-width: 460px) {
             display: contents;
         }
     }
+
     &__btn {
         color: white;
         border: solid 0.5px white;
@@ -97,6 +99,7 @@ button {
         flex-wrap: wrap;
         justify-content: center;   
     }
+
     &__button {
         background-color:rgb(8, 160, 112);
         color: white;
@@ -223,16 +226,21 @@ button {
             color: rgb(8, 160, 112);
             background-color: white;
             border: solid 1px rgb(2, 84, 58);
-            padding: 3px 4px;
+            padding: 4px 4px;
             @media (max-width: 1180px) {
                 border: none;
                 background-color: rgb(218, 75, 9);
-                color: white; 
+                color: white;
+                padding: 5px 5px;
             }
         }
         @media (max-width: 560px) {
             margin-top: 2px;        
         }
+    }
+
+    &__cancel-bill-btn {
+        margin-top: 2px;
     }
 
     &__list-container {
@@ -293,7 +301,6 @@ button {
         @media (max-width: 330px) {
             margin: 0 0 0 -5%;
         }
-        
     }
 
     &__menu-items {
@@ -320,6 +327,7 @@ button {
         color: white;
         padding: 4px;
     }
+
     &__menu-item {
         margin: 10px auto 10px auto
     }
@@ -339,6 +347,7 @@ button {
     @media (max-width: 535px) {
         flex-direction: column;
     }
+
     &__btn {
         color: white;
         background-color: rgb(8, 160, 112);
@@ -354,6 +363,7 @@ button {
             }
         }
     }
+
     &__input-error {
         color: red;
         display: none;
@@ -397,11 +407,13 @@ button {
         width: 100%;
         animation: 1s show ease;
     }
+
     &__menu-main {
         @media (max-width: 535px) {
             display: none;
         }
     }
+
     &__menu-item{
         @media (max-width: 535px) {
             display: flex;
@@ -428,6 +440,7 @@ button {
             margin-top: 5px;
         }
     }
+
     &__menu-price-input {
         margin: 2px 0 4px 0;
         border-radius: 0px;
@@ -435,6 +448,7 @@ button {
         max-width: 90px;
         width: 100%;
     }
+
     &__waiter-del-btn {
         background-color: rgb(218, 75, 9);
         padding: 2px 4px;
@@ -450,6 +464,7 @@ button {
     &__waiter-form {
         animation: 1s show ease;
     }
+
     &__waiter-name-input {
         border: solid 0.2px black;
         border-radius: none;
@@ -468,33 +483,40 @@ button {
             padding: 1px 3px;
         }
     }
+
     &__menu-form-area {
         max-width: 1140px;
         width: 100%;
     }
+
     &__menu-title-input {
         border: solid 0.2px black;
         border-radius: 0px;
         max-width: 200px;
         width: 100%;
     }
+
     &__menu-title-input-container {
         width: 60%;
         @media (max-width: 540px) {
             width: 130%; 
         }
     }
+
     &__waiters-input-container {
         width: 60%;
     }
+
     &__waiter-name-input {
         border-radius: 0px;
         margin: 5px 0 5px 0;
     }
+
     &__menu-title-input {
         border-radius: 0px;
         margin: 5px 0 5px 0;
     }
+
     &__menu-btn-style {
         color: white;
         background-color: rgb(8, 160, 112);
@@ -510,6 +532,7 @@ button {
             }
         }
     }
+
     &__waiters-btn-style {
         color: white;
         background-color: rgb(8, 160, 112);
@@ -617,9 +640,7 @@ button {
 .bill-btn {
     background-color: rgb(8, 160, 112);
     color: white;
-    &:not(:last-child) {
-        margin: 2px 1px 2px 2px;
-    }
+    margin: 2px 1px 2px 2px;
     &:hover {
         background-color: #02543a;
     }

@@ -229,19 +229,23 @@ button {
   color: rgb(8, 160, 112);
   background-color: white;
   border: solid 1px rgb(2, 84, 58);
-  padding: 3px 4px;
+  padding: 4px 4px;
 }
 @media (max-width: 1180px) {
   .bills__cancel-btn:hover {
     border: none;
     background-color: rgb(218, 75, 9);
     color: white;
+    padding: 5px 5px;
   }
 }
 @media (max-width: 560px) {
   .bills__cancel-btn {
     margin-top: 2px;
   }
+}
+.bills__cancel-bill-btn {
+  margin-top: 2px;
 }
 .bills__list-container {
   text-align: center;
@@ -641,8 +645,6 @@ button {
 .bill-btn {
   background-color: rgb(8, 160, 112);
   color: white;
-}
-.bill-btn:not(:last-child) {
   margin: 2px 1px 2px 2px;
 }
 .bill-btn:hover {
