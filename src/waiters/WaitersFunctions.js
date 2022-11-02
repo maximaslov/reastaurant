@@ -18,7 +18,7 @@ import {
   WAITERS_MENU_BTN_STYLE_CLASS
 } from './WaitersSelectors';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import {CANCEL_BTN_CLASS} from '../../GeneralSelectors'
+import { CANCEL_BTN_CLASS, SETTINGS_SELECTED_BTN_CLASS } from '../../GeneralSelectors'
 
 export let waitersListArr = [];
 
@@ -50,8 +50,8 @@ export function selelctedWaiterTemplate(waiter) {
 }
 
 export function onWaitersSettingsBtnClick() {
-    waitersSettingsBtn.classList.toggle('selected-btn');
-    if (waitersSettingsBtn.classList.contains('selected-btn')) {
+    waitersSettingsBtn.classList.toggle(SETTINGS_SELECTED_BTN_CLASS);
+    if (waitersSettingsBtn.classList.contains(SETTINGS_SELECTED_BTN_CLASS)) {
         showLoader();
         showWaitersSettingsSection();
         getWaitersList()
@@ -66,8 +66,8 @@ export function onWaitersSettingsBtnClick() {
 }
 
 function showWaitersSettingsSection() {
-    menuSettingsBtn.classList.remove('selected-btn');
-    tablesSettingsBtn.classList.remove('selected-btn');
+    menuSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
     elementDisplay(menuSettings, 'none');
     elementDisplay(tablesSettings, 'none');
     elementDisplay(waitersSettings, 'block');

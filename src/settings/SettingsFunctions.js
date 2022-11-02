@@ -12,7 +12,7 @@ import {
 import { billBlock , billsArchiveBtn, billsArchiveSection, mainContainer} from '../bills/BillsDomElements';
 import { getMenuList } from '../kitchen/KitchenFunctions';
 import { tablesSettings } from '../tables/TablesDomElements'
-import {SELECTED_BTN_CLASS} from '../../GeneralSelectors'
+import { SELECTED_BTN_CLASS , SETTINGS_SELECTED_BTN_CLASS} from '../../GeneralSelectors'
 
 export function onSettingsBtnClick() {
     settingsBtn.classList.toggle(SELECTED_BTN_CLASS);
@@ -38,14 +38,14 @@ function hideSettingsSection() {
     elementDisplay(menuSettings, 'none');
     elementDisplay(waitersSettings, 'none');
     elementDisplay(tablesSettings, 'none');
-    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    menuSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
 }
 
 export function onMenuSettingsBtnClick() {
-    menuSettingsBtn.classList.toggle(SELECTED_BTN_CLASS);
-    if (menuSettingsBtn.classList.contains(SELECTED_BTN_CLASS)) {
+    menuSettingsBtn.classList.toggle(SETTINGS_SELECTED_BTN_CLASS);
+    if (menuSettingsBtn.classList.contains(SETTINGS_SELECTED_BTN_CLASS)) {
         getMenuList();
         showLoader();
         showMenuSettings();
@@ -55,8 +55,8 @@ export function onMenuSettingsBtnClick() {
 }
 
 function showMenuSettings() {
-    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
     elementDisplay(waitersSettings, 'none');
     elementDisplay(tablesSettings, 'none');
     elementDisplay(menuSettings, 'block');

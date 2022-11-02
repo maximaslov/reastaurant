@@ -35,7 +35,7 @@ import {
     tablesSettingsBtn
 } from '../settings/SettingsDomElements';
 import { tablesSettings } from '../tables/TablesDomElements'
-import {SELECTED_BTN_CLASS} from '../../GeneralSelectors'
+import {SELECTED_BTN_CLASS, SETTINGS_SELECTED_BTN_CLASS} from '../../GeneralSelectors'
 
 let billsItemsList = [];
 
@@ -133,9 +133,9 @@ function showOnlyArchiveSection() {
 }
 
 function removeSelectedClassFromBtns() {
-    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    tablesSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    menuSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    tablesSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
     settingsBtn.classList.remove(SELECTED_BTN_CLASS);
 }
 

@@ -10,8 +10,8 @@ import {
     menuSettingsBtn, 
     waitersSettingsBtn
 } from '../settings/SettingsDomElements';
-import {TABLES_SETTINGS_DEL_ITEM_BTN_CLASS, TABLES_SETTINGS_ITEM_CLASS, SETTINGS_TABLES_ADD_BTN_CLASS } from './TablesSelectors';
-import {SELECTED_BTN_CLASS} from '../../GeneralSelectors';
+import { TABLES_SETTINGS_DEL_ITEM_BTN_CLASS, TABLES_SETTINGS_ITEM_CLASS, SETTINGS_TABLES_ADD_BTN_CLASS } from './TablesSelectors';
+import { SETTINGS_SELECTED_BTN_CLASS } from '../../GeneralSelectors';
 
 let tablesListArr = [];
 
@@ -21,8 +21,8 @@ export function renderTablesList(list) {
 }
 
 export function onTablesSettingsBtnClick() {
-    tablesSettingsBtn.classList.toggle(SELECTED_BTN_CLASS);
-    if (tablesSettingsBtn.classList.contains(SELECTED_BTN_CLASS)) {
+    tablesSettingsBtn.classList.toggle(SETTINGS_SELECTED_BTN_CLASS);
+    if (tablesSettingsBtn.classList.contains(SETTINGS_SELECTED_BTN_CLASS)) {
         showLoader();
         showTablesSettingsSection();
         getTablesList()
@@ -37,8 +37,8 @@ export function onTablesSettingsBtnClick() {
 }
 
 function showTablesSettingsSection() {
-    menuSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
-    waitersSettingsBtn.classList.remove(SELECTED_BTN_CLASS);
+    menuSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
+    waitersSettingsBtn.classList.remove(SETTINGS_SELECTED_BTN_CLASS);
     elementDisplay(menuSettings, 'none');
     elementDisplay(waitersSettings, 'none');
     elementDisplay(tablesSettings, 'block');

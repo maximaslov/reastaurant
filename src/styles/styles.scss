@@ -380,8 +380,9 @@ button {
     }
 
     &__tables-table {
-        max-width: 160px;
+        max-width: 180px;
         width: 100%;
+        margin-bottom: 3px;
     }
 
     &__tables-item-td {
@@ -400,6 +401,11 @@ button {
 
     &__tables {
         animation: 1s show ease;
+    }
+
+    &__menu-form-area {
+        max-width: 1140px;
+        width: 100%;
     }
 
     &__menu-form {
@@ -445,7 +451,7 @@ button {
         margin: 2px 0 4px 0;
         border-radius: 0px;
         border: solid 0.2px black;
-        max-width: 90px;
+        max-width: 100px;
         width: 100%;
     }
 
@@ -484,15 +490,10 @@ button {
         }
     }
 
-    &__menu-form-area {
-        max-width: 1140px;
-        width: 100%;
-    }
-
     &__menu-title-input {
         border: solid 0.2px black;
         border-radius: 0px;
-        max-width: 200px;
+        max-width: 215px;
         width: 100%;
     }
 
@@ -510,6 +511,8 @@ button {
     &__waiter-name-input {
         border-radius: 0px;
         margin: 5px 0 5px 0;
+        max-width: 232px;
+        width: 100%;
     }
 
     &__menu-title-input {
@@ -551,7 +554,8 @@ button {
 }
 
 .menu-settings {
-    max-width: max-content;
+    max-width: 1140px;
+    width: 100%;
 }
 
 .selected-btn {
@@ -562,6 +566,22 @@ button {
         color: black;
         background-color: #f0ffb6;
         padding: 5px 5px;
+        @media (max-width: 1180px) {
+            background-color: white;
+            border: solid 1px #02543a;
+        }
+    }
+}
+
+.settings-selected-btn {
+    color: black;
+    background-color: white;
+    border: solid 1px #02543a;
+    padding: 4px 5px;
+    &:hover {
+        color: black;
+        background-color: #f0ffb6;
+        padding: 4px 5px;
         @media (max-width: 1180px) {
             background-color: white;
             border: solid 1px #02543a;
@@ -612,7 +632,7 @@ button {
     width: 100%;
     height: 1000px;
     position: absolute;
-    background-color: rgba(204, 204, 204, 0.187);
+    background-color: rgba(204, 204, 204, 0.25);
     padding-top: 100px;
     z-index: 1;
     @media (max-width: 720px) {

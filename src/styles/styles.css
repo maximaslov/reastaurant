@@ -389,8 +389,9 @@ button {
   display: none;
 }
 .settings__tables-table {
-  max-width: 160px;
+  max-width: 180px;
   width: 100%;
+  margin-bottom: 3px;
 }
 .settings__tables-item-td {
   display: flex;
@@ -405,6 +406,10 @@ button {
 }
 .settings__tables {
   animation: 1s show ease;
+}
+.settings__menu-form-area {
+  max-width: 1140px;
+  width: 100%;
 }
 .settings__menu-form {
   max-width: 1140px;
@@ -449,7 +454,7 @@ button {
   margin: 2px 0 4px 0;
   border-radius: 0px;
   border: solid 0.2px black;
-  max-width: 90px;
+  max-width: 100px;
   width: 100%;
 }
 .settings__waiter-del-btn {
@@ -483,14 +488,10 @@ button {
   border: solid 1px rgb(2, 84, 58);
   padding: 1px 3px;
 }
-.settings__menu-form-area {
-  max-width: 1140px;
-  width: 100%;
-}
 .settings__menu-title-input {
   border: solid 0.2px black;
   border-radius: 0px;
-  max-width: 200px;
+  max-width: 215px;
   width: 100%;
 }
 .settings__menu-title-input-container {
@@ -507,6 +508,8 @@ button {
 .settings__waiter-name-input {
   border-radius: 0px;
   margin: 5px 0 5px 0;
+  max-width: 232px;
+  width: 100%;
 }
 .settings__menu-title-input {
   border-radius: 0px;
@@ -548,7 +551,8 @@ button {
 }
 
 .menu-settings {
-  max-width: max-content;
+  max-width: 1140px;
+  width: 100%;
 }
 
 .selected-btn {
@@ -563,6 +567,24 @@ button {
 }
 @media (max-width: 1180px) {
   .selected-btn:hover {
+    background-color: white;
+    border: solid 1px #02543a;
+  }
+}
+
+.settings-selected-btn {
+  color: black;
+  background-color: white;
+  border: solid 1px #02543a;
+  padding: 4px 5px;
+}
+.settings-selected-btn:hover {
+  color: black;
+  background-color: #f0ffb6;
+  padding: 4px 5px;
+}
+@media (max-width: 1180px) {
+  .settings-selected-btn:hover {
     background-color: white;
     border: solid 1px #02543a;
   }
@@ -611,7 +633,7 @@ button {
   width: 100%;
   height: 1000px;
   position: absolute;
-  background-color: rgba(204, 204, 204, 0.187);
+  background-color: rgba(204, 204, 204, 0.25);
   padding-top: 100px;
   z-index: 1;
 }

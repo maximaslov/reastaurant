@@ -40,7 +40,7 @@ import {
     onWaitersSettingsFocusout
 } from './waiters/WaitersFunctions';
 import { onMenuSettingsClick, onMenuSettingsFocusout } from './kitchen/KitchenFunctions';
-import { onSettingsBtnClick, onMenuSettingsBtnClick , showLoader, hideLoader } from './settings/SettingsFunctions';
+import { onSettingsBtnClick, onMenuSettingsBtnClick } from './settings/SettingsFunctions';
 import { tablesSettings } from './tables/TablesDomElements';
 
 showMainContent()
