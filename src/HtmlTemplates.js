@@ -217,6 +217,8 @@ export function newBillTemplate(elem) {
             <button class="bills__cancel-bill-btn bills__cancel-btn">Скасувати</button>
         </div>
         `
+    } else {
+        return;
     }
 }
 

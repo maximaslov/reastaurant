@@ -167,8 +167,8 @@ function closeBill(id, totalPrice){
         .then(() => {
             BillsApi.changeBillStatus(id, false)
                 .then(item => {
-                    const newList = billsItemsList.filter(e => e.id !== item.id);
-                    renderOpenBillsList(newList);
+                    billsItemsList = billsItemsList.filter(e => e.id !== item.id);
+                    renderOpenBillsList(billsItemsList);
                     hideLoader();
              });
         });
