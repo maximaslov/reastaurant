@@ -35,7 +35,7 @@ import {
     tablesSettingsBtn
 } from '../settings/SettingsDomElements';
 import { tablesSettings } from '../tables/TablesDomElements'
-import {SELECTED_BTN_CLASS, SETTINGS_SELECTED_BTN_CLASS} from '../../GeneralSelectors'
+import {SELECTED_BTN_CLASS, SETTINGS_SELECTED_BTN_CLASS} from '../GeneralSelectors'
 
 let billsItemsList = [];
 

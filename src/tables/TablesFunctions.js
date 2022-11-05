@@ -11,7 +11,7 @@ import {
     waitersSettingsBtn
 } from '../settings/SettingsDomElements';
 import { TABLES_SETTINGS_DEL_ITEM_BTN_CLASS, TABLES_SETTINGS_ITEM_CLASS, SETTINGS_TABLES_ADD_BTN_CLASS } from './TablesSelectors';
-import { SETTINGS_SELECTED_BTN_CLASS } from '../../GeneralSelectors';
+import { SETTINGS_SELECTED_BTN_CLASS } from '../GeneralSelectors';
 
 let tablesListArr = [];
 

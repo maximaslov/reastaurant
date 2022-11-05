@@ -92,6 +92,7 @@ export function waitersSettingsHtmlTemplate(list) { {
     `;
     }
 }
+
 export function tablesSettingsHtmlTemplate(list) { {
     let tablesItems = '';
 
@@ -134,6 +135,7 @@ export function addNewMenuItemForm() {
         </form>
     `
 }
+
 export function addNewWaiterForm() {
     return `
         <form class="settings__waiter-form">
@@ -245,4 +247,3 @@ export function modalWindow(billId, tableId, list) {
         </div>
     `
 }
-
