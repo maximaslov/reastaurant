@@ -12,7 +12,7 @@ import {
 import { billBlock , billsArchiveBtn, billsArchiveSection, mainContainer} from '../bills/BillsDomElements';
 import { getMenuList } from '../kitchen/KitchenFunctions';
 import { tablesSettings } from '../tables/TablesDomElements'
-import { SELECTED_BTN_CLASS , SETTINGS_SELECTED_BTN_CLASS} from '../GeneralSelectors'
+import { SELECTED_BTN_CLASS , SETTINGS_SELECTED_BTN_CLASS} from '../GeneralSelectors';
 
 export function onSettingsBtnClick() {
     settingsBtn.classList.toggle(SELECTED_BTN_CLASS);

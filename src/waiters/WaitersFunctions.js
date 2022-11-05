@@ -18,7 +18,8 @@ import {
     WAITERS_MENU_BTN_STYLE_CLASS
 } from './WaitersSelectors';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import { SETTINGS_SELECTED_BTN_CLASS } from '../GeneralSelectors'
+import { SETTINGS_SELECTED_BTN_CLASS } from '../GeneralSelectors';
+import {CANCEL_BTN_CLASS} from '../settings/SettingsSelectors'
 
 export let waitersListArr = [];
 
