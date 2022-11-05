@@ -92,12 +92,14 @@ export function onCreateBillBtnClick(e) {
 
 function todayDate() {
     const date = new Date;
+    const day = date.getDate().toString();
     const month = date.getMonth().toString();
+    const hours = date.getHours().toString();
     const minutes = date.getMinutes().toString();
     const seconds = date.getSeconds().toString();
 
-    const now = `${date.getDate()}.${month.padStart(2, "0")}.${date.getFullYear()}
-    ${date.getHours()}:${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}`
+    const now = `${day.padStart(2, "0")}.${month.padStart(2, "0")}.${date.getFullYear()}
+    ${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}`
     
     return now;
 }

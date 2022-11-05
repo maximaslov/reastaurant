@@ -8,3 +8,4 @@ export const HEADER_SETTINGS_BTN_CLASS = "btn-settings";
 export const SETTINGS_BLOCK_CLASS = 'settings';
 export const LOADING_CLASS = 'loading';
 export const SETTINGS_MENU_BTN_STYLE_CLASS = 'settings__menu-btn-style';
+export const CANCEL_BTN_CLASS = 'settings__cancel-btn';

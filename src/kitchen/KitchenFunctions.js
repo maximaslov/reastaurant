@@ -16,8 +16,8 @@ import {
     MENU_FORM_AREA_CLASS
 } from './KitchenSelectors'
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import {SETTINGS_MENU_BTN_STYLE_CLASS} from '../settings/SettingsSelectors';
-import {CANCEL_BTN_CLASS} from '../../GeneralSelectors'
+import { SETTINGS_MENU_BTN_STYLE_CLASS } from '../settings/SettingsSelectors';
+import { CANCEL_BTN_CLASS } from '../settings/SettingsSelectors';
 
 export let menuList = [];
 
@@ -112,7 +112,6 @@ export function onMenuSettingsFocusout(e) {
         if (dataItem.classList.contains(MENU_SETTINGS_ITEM_PRICE_CLASS)){
             showLoader();
             changeMenuItems(id, {price: dataItem.value});  
-            console.log(id, dataItem.value)
         }
     }
 }

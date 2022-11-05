@@ -39,10 +39,10 @@ export function menuSettingsHtmlTemplate(list) { {
         menuItems += `
         <tr class="settings__menu-item" data-id="${item.id}">
             <td class="settings__menu-title-input-container">
-            <input class="menuItem-title" value="${item.title}"></input>
+            <input class="settings__menu-item-title" value="${item.title}"></input>
             </td>
             <td>
-            <input class="menuItem-price" value="${item.price}"></input>
+            <input class="settings__menu-item-price" value="${item.price}"></input>
             </td>
             <td><button class="settings__menu-del-btn">Видалити</button></td>
         </tr>
@@ -72,7 +72,7 @@ export function waitersSettingsHtmlTemplate(list) { {
         waitersItems += `
         <tr class="settings__waiters-item" data-id="${item.id}">
             <td class="settings__waiters-input-container">
-            <input class="waiter-name" value="${item.name}"></input>
+            <input class="settings__waiter-name" value="${item.name}"></input>
             </td>
             <td><button class="settings__waiter-del-btn">Видалити</button></td>
         </tr>
@@ -82,7 +82,7 @@ export function waitersSettingsHtmlTemplate(list) { {
     return `
         <div class="settings__waiters">
         <table>
-            <tr class="settings____waiters-main">
+            <tr class="settings__waiters-main">
                 <th>Офіціянт</th>
             </tr>
                 ${waitersItems}
@@ -172,15 +172,15 @@ export function archiveListTemplate (elem) {
     })
         if(!elem.status) {
             return `
-            <div data-id="${elem.id}" class="archive-bill-item">
-                <p class="archive-bill-item-number">Рахунок №${elem.id}</p>
+            <div data-id="${elem.id}" class="bills-archive__item">
+                <p class="bills-archive__item-number">Рахунок №${elem.id}</p>
                 <p>Від ${elem.data}</p>
                 <p>Офіціянт: ${elem.waiter}</p>
                 <p>Столик: ${elem.table}</p>
                 <p>Замовлення по кухні:
                 <div class="kitchen-orders">${kitchenItems}</div>
                 </p>
-                <p class="archive-bill-item-price">Загальна сумма: ${elem.totalprice} грн.</p>
+                <p class="bills-archive__item-price">Загальна сумма: ${elem.totalprice} грн.</p>
             </div>
             `
         }
@@ -201,19 +201,19 @@ export function newBillTemplate(elem) {
     })
     if(elem.status) {
         return `
-        <div data-id="${elem.id}" class="active-bill-item">
+        <div data-id="${elem.id}" class="bills__active-bill-item">
             <p>Рахунок №${elem.id}</p>
             <p>Від ${elem.data}</p>
             <p>Офіціянт: ${elem.waiter}</p>
             <p class="bills__active-bill-table" data-id="${elem.table}">Стіл № ${elem.table}</p>
             <p>Замовлення по кухні:
-                <div class="kitchen-orders">
+                <div class="bills__active-kitchen-orders">
                     ${kitchenItems}
                 </div>
             </p>
             <p class="bills__total-price" data-id="${totalPrice.toFixed(2)}">Загальна сумма: ${totalPrice.toFixed(2)} грн.</p>
-            <button class="bills__add-kitchen-item-btn bill-btn">Додати до замовлення</button>
-            <button class="bills__close-bill-btn bill-btn">Закрити рахунок</button>
+            <button class="bills__add-kitchen-item-btn bills__bill-btn">Додати до замовлення</button>
+            <button class="bills__close-bill-btn bills__bill-btn">Закрити рахунок</button>
             <button class="bills__cancel-bill-btn bills__cancel-btn">Скасувати</button>
         </div>
         `

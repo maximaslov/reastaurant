@@ -108,6 +108,15 @@ button {
         }
     }
 
+    &__bill-btn {
+        background-color: rgb(8, 160, 112);
+        color: white;
+        margin: 2px 1px 2px 2px;
+        &:hover {
+            background-color: #02543a;
+        }
+    }
+
     &__button-style {
         margin-bottom: 5px;
     }
@@ -268,6 +277,22 @@ button {
         margin-bottom: 20px;
     }
 
+    &__active-bill-item {
+        background-color:#f1edd3de;
+        color: rgb(40, 40, 40);
+        padding: 10px;
+        max-width: 250px;
+        width: 100%;
+        box-shadow: 5px 5px 10px #02543a22;
+        margin: 10px;
+    }
+
+    &__active-kitchen-orders {
+        margin-bottom: 10px;
+        text-align: start;
+        margin-top: 5px;
+    }
+
     &__date {
         color: rgb(117, 116, 116);
         font-weight: 300;
@@ -323,9 +348,6 @@ button {
         max-width: 110px;
         margin: 10px auto 10px auto;
         width: 100%;
-        background-color: rgb(218, 75, 9);
-        color: white;
-        padding: 4px;
     }
 
     &__menu-item {
@@ -364,6 +386,23 @@ button {
         }
     }
 
+    &__cancel-btn {
+        color: white;
+        background-color: rgb(218, 75, 9);
+        &:hover {
+            color:#02543a;
+            background-color: white;
+            border: solid 1px black;
+            padding: 4px 4px;
+            @media (max-width: 1180px) {
+                color: white;
+                background-color: rgb(218, 75, 9);
+                border: none;
+                padding: 5px 5px;
+            }
+        }
+    }
+
     &__input-error {
         color: red;
         display: none;
@@ -395,8 +434,31 @@ button {
         animation: 1s show ease;
     }
 
+    &__menu-item-title {
+        max-width: 300px;
+        width: 100%;
+        margin-bottom: 2px;
+        border-radius: 0px;
+        border: solid 0.1px black;
+        padding-left: 2px;
+    }
+    
+    &__menu-item-price {
+        border-radius: 0px;
+        border: solid 0.1px black;
+        padding-left: 2px;
+        max-width: 70px;
+        width: 100%;
+    }
+
     &__waiters {
         animation: 1s show ease;
+    }
+
+    &__waiter-name {
+        border-radius: 0px;
+        border: solid 0.2px black;
+        padding-left: 2px;
     }
 
     &__tables {
@@ -554,6 +616,7 @@ button {
 }
 
 .menu-settings {
+    display: none;
     max-width: 1140px;
     width: 100%;
 }
@@ -589,39 +652,28 @@ button {
     }
 }
 
-.menu-settings {
-    display: none;
-}
-
 .bills-archive {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+    &__item {
+        background-color:#f1edd3de;
+        color: rgb(40, 40, 40);
+        padding: 10px;
+        max-width: 250px;
+        width: 100%;
+        box-shadow: 5px 5px 10px #02543a22;
+        margin: 10px;
+        animation: 1s show ease;
+    }
 
-.archive-bill-item {
-    background-color:#f1edd3de;
-    color: rgb(40, 40, 40);
-    padding: 10px;
-    max-width: 250px;
-    width: 100%;
-    box-shadow: 5px 5px 10px #02543a22;
-    margin: 10px;
-    animation: 1s show ease;
-}
-
-.active-bill-item {
-    background-color:#f1edd3de;
-    color: rgb(40, 40, 40);
-    padding: 10px;
-    max-width: 250px;
-    width: 100%;
-    box-shadow: 5px 5px 10px #02543a22;
-    margin: 10px;
-}
-
-.kitchen-orders {
-    margin-bottom: 10px;
+    &__item-price {
+        font-weight: 900;
+    }
+    
+    &__item-number {
+        font-weight: 900;
+    }
 }
 
 .loading {
@@ -639,72 +691,21 @@ button {
         width: 720px;
         width: 100%;
     }
-}
-
-.loading img {
-    max-width: 100px;
-    width: 100%;
-    height: 100%;
-    margin-top: 200px;
-    height: fit-content;
-    @media (max-width: 1180px) {
-        margin-top: 80px;
+    & img {
+        max-width: 100px;
+        width: 100%;
+        height: 100%;
+        margin-top: 200px;
+        height: fit-content;
+        @media (max-width: 1180px) {
+            margin-top: 80px;
+        }
+        @media (max-width: 720px) {
+            margin-top: 80px;
+            width: 30px;
+            height: 30px;
+        }
     }
-    @media (max-width: 720px) {
-        margin-top: 80px;
-        width: 30px;
-        height: 30px;
-    }
-}
-
-.bill-btn {
-    background-color: rgb(8, 160, 112);
-    color: white;
-    margin: 2px 1px 2px 2px;
-    &:hover {
-        background-color: #02543a;
-    }
-}
-
-.kitchen-orders {
-    text-align: start;
-    margin-top: 5px;
-}
-
-.archive-bill-item-price {
-    font-weight: 900;
-}
-
-.archive-bill-item-number {
-    font-weight: 900;
-}
-
-.menuItem-title {
-    max-width: 300px;
-    width: 100%;
-    margin-bottom: 2px;
-    border-radius: 0px;
-    border: solid 0.1px black;
-    padding-left: 2px;
-}
-
-.menuItem-price {
-    border-radius: 0px;
-    border: solid 0.1px black;
-    padding-left: 2px;
-    max-width: 70px;
-    width: 100%;
-}
-
-.waiter-name {
-    border-radius: 0px;
-    border: solid 0.2px black;
-    padding-left: 2px;
-}
-
-.cancel-btn {
-    color: white;
-    background-color: rgb(218, 75, 9);
 }
 
 @keyframes show {

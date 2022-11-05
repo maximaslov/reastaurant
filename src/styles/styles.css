@@ -120,6 +120,14 @@ button {
 .bills__button:hover {
   background-color: #02543a;
 }
+.bills__bill-btn {
+  background-color: rgb(8, 160, 112);
+  color: white;
+  margin: 2px 1px 2px 2px;
+}
+.bills__bill-btn:hover {
+  background-color: #02543a;
+}
 .bills__button-style {
   margin-bottom: 5px;
 }
@@ -271,6 +279,20 @@ button {
 .bills__active-bill-table {
   margin-bottom: 20px;
 }
+.bills__active-bill-item {
+  background-color: rgba(241, 237, 211, 0.8705882353);
+  color: rgb(40, 40, 40);
+  padding: 10px;
+  max-width: 250px;
+  width: 100%;
+  box-shadow: 5px 5px 10px rgba(2, 84, 58, 0.1333333333);
+  margin: 10px;
+}
+.bills__active-kitchen-orders {
+  margin-bottom: 10px;
+  text-align: start;
+  margin-top: 5px;
+}
 .bills__date {
   color: rgb(117, 116, 116);
   font-weight: 300;
@@ -335,9 +357,6 @@ button {
   max-width: 110px;
   margin: 10px auto 10px auto;
   width: 100%;
-  background-color: rgb(218, 75, 9);
-  color: white;
-  padding: 4px;
 }
 .bills__menu-item {
   margin: 10px auto 10px auto;
@@ -376,6 +395,24 @@ button {
     background-color: rgb(8, 160, 112);
   }
 }
+.settings__cancel-btn {
+  color: white;
+  background-color: rgb(218, 75, 9);
+}
+.settings__cancel-btn:hover {
+  color: #02543a;
+  background-color: white;
+  border: solid 1px black;
+  padding: 4px 4px;
+}
+@media (max-width: 1180px) {
+  .settings__cancel-btn:hover {
+    color: white;
+    background-color: rgb(218, 75, 9);
+    border: none;
+    padding: 5px 5px;
+  }
+}
 .settings__input-error {
   color: red;
   display: none;
@@ -401,8 +438,28 @@ button {
 .settings__menu {
   animation: 1s show ease;
 }
+.settings__menu-item-title {
+  max-width: 300px;
+  width: 100%;
+  margin-bottom: 2px;
+  border-radius: 0px;
+  border: solid 0.1px black;
+  padding-left: 2px;
+}
+.settings__menu-item-price {
+  border-radius: 0px;
+  border: solid 0.1px black;
+  padding-left: 2px;
+  max-width: 70px;
+  width: 100%;
+}
 .settings__waiters {
   animation: 1s show ease;
+}
+.settings__waiter-name {
+  border-radius: 0px;
+  border: solid 0.2px black;
+  padding-left: 2px;
 }
 .settings__tables {
   animation: 1s show ease;
@@ -551,6 +608,7 @@ button {
 }
 
 .menu-settings {
+  display: none;
   max-width: 1140px;
   width: 100%;
 }
@@ -590,17 +648,12 @@ button {
   }
 }
 
-.menu-settings {
-  display: none;
-}
-
 .bills-archive {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.archive-bill-item {
+.bills-archive__item {
   background-color: rgba(241, 237, 211, 0.8705882353);
   color: rgb(40, 40, 40);
   padding: 10px;
@@ -610,19 +663,11 @@ button {
   margin: 10px;
   animation: 1s show ease;
 }
-
-.active-bill-item {
-  background-color: rgba(241, 237, 211, 0.8705882353);
-  color: rgb(40, 40, 40);
-  padding: 10px;
-  max-width: 250px;
-  width: 100%;
-  box-shadow: 5px 5px 10px rgba(2, 84, 58, 0.1333333333);
-  margin: 10px;
+.bills-archive__item-price {
+  font-weight: 900;
 }
-
-.kitchen-orders {
-  margin-bottom: 10px;
+.bills-archive__item-number {
+  font-weight: 900;
 }
 
 .loading {
@@ -643,7 +688,6 @@ button {
     width: 100%;
   }
 }
-
 .loading img {
   max-width: 100px;
   width: 100%;
@@ -662,56 +706,6 @@ button {
     width: 30px;
     height: 30px;
   }
-}
-
-.bill-btn {
-  background-color: rgb(8, 160, 112);
-  color: white;
-  margin: 2px 1px 2px 2px;
-}
-.bill-btn:hover {
-  background-color: #02543a;
-}
-
-.kitchen-orders {
-  text-align: start;
-  margin-top: 5px;
-}
-
-.archive-bill-item-price {
-  font-weight: 900;
-}
-
-.archive-bill-item-number {
-  font-weight: 900;
-}
-
-.menuItem-title {
-  max-width: 300px;
-  width: 100%;
-  margin-bottom: 2px;
-  border-radius: 0px;
-  border: solid 0.1px black;
-  padding-left: 2px;
-}
-
-.menuItem-price {
-  border-radius: 0px;
-  border: solid 0.1px black;
-  padding-left: 2px;
-  max-width: 70px;
-  width: 100%;
-}
-
-.waiter-name {
-  border-radius: 0px;
-  border: solid 0.2px black;
-  padding-left: 2px;
-}
-
-.cancel-btn {
-  color: white;
-  background-color: rgb(218, 75, 9);
 }
 
 @keyframes show {

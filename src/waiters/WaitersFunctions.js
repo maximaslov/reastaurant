@@ -15,10 +15,11 @@ import {
     SETTINGS_NAME_INPUT_CLASS, 
     SETTINGS_WAITERS_INPUT_ERROR_CLASS, 
     SETTINGS_INPUT_WAITER_NAME_CLASS , 
-  WAITERS_MENU_BTN_STYLE_CLASS
+    WAITERS_MENU_BTN_STYLE_CLASS
 } from './WaitersSelectors';
 import { showLoader, hideLoader } from '../settings/SettingsFunctions';
-import { CANCEL_BTN_CLASS, SETTINGS_SELECTED_BTN_CLASS } from '../../GeneralSelectors'
+import { SETTINGS_SELECTED_BTN_CLASS } from '../../GeneralSelectors'
+
 
 export let waitersListArr = [];
 
