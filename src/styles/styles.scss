@@ -437,10 +437,12 @@ button {
     &__menu-item-title {
         max-width: 300px;
         width: 100%;
-        margin-bottom: 2px;
         border-radius: 0px;
         border: solid 0.1px black;
         padding-left: 2px;
+        @media (max-width: 535px) {
+            margin-bottom: 5px;
+        }
     }
     
     &__menu-item-price {
