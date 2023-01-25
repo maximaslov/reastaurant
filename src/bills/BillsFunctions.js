@@ -98,7 +98,6 @@ function todayDate() {
     const minutes = date.getMinutes().toString();
     const seconds = date.getSeconds().toString();
 
-    console.table(month)
     const now = `${day.padStart(2, "0")}.${month.padStart(2, "0")}.${date.getFullYear()}
     ${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}`
     
