@@ -83,11 +83,11 @@ export function waitersSettingsHtmlTemplate(list) { {
         <div class="settings__waiters">
         <table>
             <tr class="settings__waiters-main">
-                <th>Офіціянт</th>
+                <th>Офіціант</th>
             </tr>
                 ${waitersItems}
         </table>
-        <button class="settings__waiters-btn settings__waiters-btn-style">Додати офіціянта</button>
+        <button class="settings__waiters-btn settings__waiters-btn-style">Додати офіціанта</button>
         <div class="settings__waiters-form-area"><div/>
     `;
     }
@@ -139,8 +139,8 @@ export function addNewMenuItemForm() {
 export function addNewWaiterForm() {
     return `
         <form class="settings__waiter-form">
-            <input value="" class="settings__waiter-name-input" placeholder="Введіть імʼя нового офіціянта"></input>
-            <button type="submit" class="settings__waiters-add-item settings__btn">Додати офіціянта</button>
+            <input value="" class="settings__waiter-name-input" placeholder="Введіть імʼя нового офіціанта"></input>
+            <button type="submit" class="settings__waiters-add-item settings__btn">Додати офіціанта</button>
             <p class="settings__waiters-error">
             Заповніть, будь ласка, правильно форму:<br>
             - Поле не повинно бути пустим;
@@ -177,7 +177,7 @@ export function archiveListTemplate (elem) {
             <div data-id="${elem.id}" class="bills-archive__item">
                 <p class="bills-archive__item-number">Рахунок №${elem.id}</p>
                 <p>Від ${elem.data}</p>
-                <p>Офіціянт: ${elem.waiter}</p>
+                <p>Офіціант: ${elem.waiter}</p>
                 <p>Столик: ${elem.table}</p>
                 <p>Замовлення по кухні:
                 <div class="kitchen-orders">${kitchenItems}</div>
@@ -206,7 +206,7 @@ export function newBillTemplate(elem) {
         <div data-id="${elem.id}" class="bills__active-bill-item">
             <p>Рахунок №${elem.id}</p>
             <p>Від ${elem.data}</p>
-            <p>Офіціянт: ${elem.waiter}</p>
+            <p>Офіціант: ${elem.waiter}</p>
             <p class="bills__active-bill-table" data-id="${elem.table}">Стіл № ${elem.table}</p>
             <p>Замовлення по кухні:
                 <div class="bills__active-kitchen-orders">
